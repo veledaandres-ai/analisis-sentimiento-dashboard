@@ -10,6 +10,7 @@
         .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .header-banner { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 40px 20px; border-radius: 0 0 15px 15px; margin-bottom: 30px; }
         .chart-img { max-width: 100%; height: auto; display: block; margin: 0 auto; padding: 10px; }
+        .badge-banco { background-color: #e9ecef; color: #495057; font-weight: 600; border: 1px solid #ced4da; }
     </style>
 </head>
 <body>
@@ -18,16 +19,17 @@
         <div class="header-banner text-center">
             <h1 class="display-5 fw-bold">Monitoreo de Riesgo Reputacional Financiero</h1>
             <p class="lead">Fase 1: Pipeline de Procesamiento de Lenguaje Natural Nativo (MVP)</p>
-            <span class="badge bg-success px-3 py-2 fw-semibold">Datos Procesados en KNIME Analytics Platform</span>
+            <span class="badge bg-success px-3 py-2 fw-semibold">Datos Genuinos de KNIME Analytics Platform</span>
         </div>
 
         <div class="row">
             <div class="col-md-4">
                 <div class="card p-4">
-                    <h4 class="text-primary mb-3">Arquitectura del Pipeline</h4>
-                    <p>Este desarrollo presenta la interfaz de usuario final alimentada por los datos genuinos extraídos del motor analítico de <strong>KNIME 5</strong>.</p>
+                    <h4 class="text-primary mb-3">Sobre el Análisis</h4>
+                    <p>Este panel expone en tiempo real los resultados de la ingeniería de datos realizada sobre titulares de la prensa económica.</p>
+                    <p>El motor léxico local clasifica las palabras individualmente y determina la tendencia mediante un proceso de agregación estadística (Moda).</p>
                     <hr>
-                    <p class="text-muted small">Al subir nuevos lotes de noticias en la etapa local, KNIME actualiza el archivo de intercambio de datos, impactando directamente en los reportes visuales de este sitio de producción.</p>
+                    <p class="text-muted small">Desplegado automáticamente mediante integración continua en Vercel.</p>
                 </div>
             </div>
 
@@ -51,13 +53,14 @@
                 </div>
 
                 <div class="card p-4">
-                    <h5 class="fw-bold mb-3">Titulares Clasificados (Lectura directa de KNIME)</h5>
+                    <h5 class="fw-bold mb-3">Monitoreo de Entidades Cobertura (Datos Reales de KNIME)</h5>
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle" id="tabla-resultados">
+                        <table class="table table-hover align-middle">
                             <thead class="table-dark">
                                 <tr>
+                                    <th style="width: 150px;">Entidad</th>
                                     <th>Titular de la Noticia Financiera</th>
-                                    <th class="text-center" style="width: 140px;">Veredicto IA</th>
+                                    <th class="text-center" style="width: 130px;">Veredicto IA</th>
                                 </tr>
                             </thead>
                             <tbody id="cuerpo-tabla">
@@ -75,32 +78,53 @@
             try {
                 const respuesta = await fetch('resultados_sentiment.csv');
                 const texto = await respuesta.text();
-                const lineas = texto.split('\n');
-                const cuerpoTabla = document.getElementById('cuerpo-tabla');
                 
-                // Empezamos en 1 para saltar la fila de encabezados del CSV
-                for (let i = 1; i < lineas.length; i++) {
-                    if (lineas[i].trim() === '') continue;
-                    
-                    // Separamos por coma (asumiendo formato estándar de KNIME CSV)
-                    const columnas = lineas[i].split(',');
-                    
-                    // Ajustá los índices [0] y [1] dependiendo de en qué columna quedó el Titular y el Veredicto en tu CSV
-                    const titular = columnas[0].replace(/"/g, ''); 
-                    const veredicto = columnas[1].replace(/"/g, '').trim(); 
+                // Separar filas respetando los saltos de línea estándar
+                const filas = texto.split(/\r?\n/);
+                const cuerpoTabla = document.getElementById('cuerpo-tabla');
+                cuerpoTabla.innerHTML = ""; // Limpiar tabla anterior
 
+                // Empezamos en 1 para saltear la cabecera del CSV (ID, "Banco", "Titular_Noticia", "Mode(...)")
+                for (let i = 1; i < filas.length; i++) {
+                    if (filas[i].trim() === '') continue;
+
+                    // Procesamiento para separar por comas de forma segura
+                    const columnas = [];
+                    let dentroDeComillas = false;
+                    let columnaActual = '';
+
+                    for (let c of filas[i]) {
+                        if (c === '"') {
+                            dentroDeComillas = !dentroDeComillas;
+                        } else if (c === ',' && !dentroDeComillas) {
+                            columnas.push(columnaActual.trim());
+                            columnaActual = '';
+                        } else {
+                            columnaActual += c;
+                        }
+                    }
+                    columnas.push(columnaActual.trim());
+
+                    // Mapeo exacto según el orden de tu CSV Writer: ID(0), Banco(1), Titular_Noticia(2), Mode(3)
+                    const banco = columnas[1] ? columnas[1].replace(/"/g, '') : "N/A";
+                    const titular = columnas[2] ? columnas[2].replace(/"/g, '') : "Sin texto";
+                    const veredicto = columnas[3] ? columnas[3].replace(/"/g, '').trim() : "Neutral";
+
+                    // Asignación dinámica de colores para las etiquetas de sentimiento
                     let badgeColor = 'bg-secondary';
                     if (veredicto.toLowerCase().includes('posit')) badgeColor = 'bg-success';
                     if (veredicto.toLowerCase().includes('negat')) badgeColor = 'bg-danger';
 
-                    const fila = `<tr>
-                        <td>${titular}</td>
-                        <td class="text-center"><span class="badge ${badgeColor} px-3 py-2">${veredicto}</span></td>
+                    const filaHTML = `<tr>
+                        <td><span class="badge badge-banco px-2 py-2 w-100">${banco}</span></td>
+                        <td class="text-secondary fw-medium">${titular}</td>
+                        <td class="text-center"><span class="badge ${badgeColor} px-3 py-2 fw-semibold">${veredicto}</span></td>
                     </tr>`;
-                    cuerpoTabla.innerHTML += fila;
+                    
+                    cuerpoTabla.innerHTML += filaHTML;
                 }
             } catch (error) {
-                console.error("Error cargando el archivo de datos de KNIME:", error);
+                console.error("Error al mapear el CSV de KNIME:", error);
             }
         }
         cargarDatosKNIME();
