@@ -9,7 +9,11 @@
         body { background-color: #f8f9fa; font-family: sans-serif; }
         .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .header-banner { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 40px 20px; border-radius: 0 0 15px 15px; margin-bottom: 30px; }
-        .chart-img { max-width: 100%; height: auto; display: block; margin: 0 auto; padding: 10px; }
+        
+        /* Ajuste para que los gráficos no se achaten ni se estiren horizontalmente */
+        .chart-container { max-width: 320px; margin: 0 auto; padding: 10px; }
+        .chart-img { width: 100%; height: auto; display: block; object-fit: contain; }
+        
         .badge-banco { background-color: #e9ecef; color: #495057; font-weight: 600; border: 1px solid #ced4da; }
     </style>
 </head>
@@ -40,13 +44,17 @@
                         <div class="col-md-6 text-center">
                             <div class="border rounded bg-white p-2">
                                 <h6 class="fw-bold mt-2">Distribución de Sentimiento</h6>
-                                <img src="bar_chart.png" alt="Gráfico de Barras" class="chart-img">
+                                <div class="chart-container">
+                                    <img src="bar_chart.png" alt="Gráfico de Barras" class="chart-img">
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 text-center">
                             <div class="border rounded bg-white p-2">
                                 <h6 class="fw-bold mt-2">Porcentaje de Impacto</h6>
-                                <img src="pie_chart.png" alt="Gráfico de Torta" class="chart-img">
+                                <div class="chart-container">
+                                    <img src="pie_chart.png" alt="Gráfico de Torta" class="chart-img">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,7 +72,7 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpo-tabla">
-                                </tbody>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -84,7 +92,23 @@
                 const cuerpoTabla = document.getElementById('cuerpo-tabla');
                 cuerpoTabla.innerHTML = ""; // Limpiar tabla anterior
 
-                // Empezamos en 1 para saltear la cabecera del CSV (ID, "Banco", "Titular_Noticia", "Mode(...)")
+                // Guardamos los nombres de la cabecera para buscar las columnas de forma dinámica y segura
+                const cabecera = filas[0].split(',').map(h => h.replace(/"/g, '').trim());
+                
+                // Buscamos los índices reales de las columnas en tu nuevo CSV
+                const idxBanco = cabecera.indexOf('Banco');
+                const idxTitular = cabecera.indexOf('Titular_Noticia');
+                
+                // Buscamos la columna del sentimiento procesada por el Cell Splitter (es la primera parte del split)
+                const idxVeredicto = cabecera.findIndex(h => h.includes('respuesta_ia_Arr') && h.includes('0')) !== -1 
+                    ? cabecera.findIndex(h => h.includes('respuesta_ia_Arr') && h.includes('0'))
+                    : cabecera.indexOf('respuesta_ia_Arr[0]'); 
+
+                // Si por alguna razón los índices fallan, dejamos los genéricos del nuevo layout
+                const posBanco = idxBanco !== -1 ? idxBanco : 1;
+                const posTitular = idxTitular !== -1 ? idxTitular : 2;
+                const posVeredicto = idxVeredicto !== -1 ? idxVeredicto : 11; // Suele quedar al final de la fila
+
                 for (let i = 1; i < filas.length; i++) {
                     if (filas[i].trim() === '') continue;
 
@@ -105,15 +129,28 @@
                     }
                     columnas.push(columnaActual.trim());
 
-                    // Mapeo exacto según el orden de tu CSV Writer: ID(0), Banco(1), Titular_Noticia(2), Mode(3)
-                    const banco = columnas[1] ? columnas[1].replace(/"/g, '') : "N/A";
-                    const titular = columnas[2] ? columnas[2].replace(/"/g, '') : "Sin texto";
-                    const veredicto = columnas[3] ? columnas[3].replace(/"/g, '').trim() : "Neutral";
+                    // Mapeo exacto basado en la posición real de las columnas
+                    const banco = columnas[posBanco] ? columnas[posBanco].replace(/"/g, '') : "N/A";
+                    const titular = columnas[posTitular] ? columnas[posTitular].replace(/"/g, '') : "Sin texto";
+                    const veredictoRaw = columnas[posVeredicto] ? columnas[posVeredicto].replace(/"/g, '').trim() : "Neutral";
+
+                    // ==========================================
+                    // FILTRO DE FILAS BASURA
+                    // Si la fila no tiene un banco válido, o dice "Sin texto", o vino vacía de KNIME, la salteamos
+                    // ==========================================
+                    if (banco === "N/A" || titular === "Sin texto" || titular.trim() === "" || banco.trim() === "") {
+                        continue; 
+                    }
+
+                    // Limpiamos si el veredicto trae el comentario largo o la barra suelta para dejar solo la palabra clave
+                    let veredicto = "Neutral";
+                    if (veredictoRaw.toLowerCase().includes('posit')) veredicto = 'Positivo';
+                    if (veredictoRaw.toLowerCase().includes('negat')) veredicto = 'Negativo';
 
                     // Asignación dinámica de colores para las etiquetas de sentimiento
                     let badgeColor = 'bg-secondary';
-                    if (veredicto.toLowerCase().includes('posit')) badgeColor = 'bg-success';
-                    if (veredicto.toLowerCase().includes('negat')) badgeColor = 'bg-danger';
+                    if (veredicto === 'Positivo') badgeColor = 'bg-success';
+                    if (veredicto === 'Negativo') badgeColor = 'bg-danger';
 
                     const filaHTML = `<tr>
                         <td><span class="badge badge-banco px-2 py-2 w-100">${banco}</span></td>
