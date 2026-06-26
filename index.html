@@ -101,14 +101,16 @@
                 const cuerpoTabla = document.getElementById('cuerpo-tabla');
                 cuerpoTabla.innerHTML = ""; 
 
-                // Lista de bancos oficiales bajo monitoreo
                 const bancosConocidos = ["santander", "galicia", "bbva", "macro"];
+                
+                // Set para evitar la duplicación de titulares en la interfaz web
+                const titularesProcesados = new Set();
 
                 for (let i = 1; i < filas.length; i++) {
                     const lineaOriginal = filas[i].trim();
                     if (lineaOriginal === '') continue;
 
-                    // 1. Identificación absoluta de Entidad por palabra clave
+                    // 1. Identificación absoluta de Entidad
                     let bancoDetectado = null;
                     const lineaLower = lineaOriginal.toLowerCase();
                     for (let b of bancosConocidos) {
@@ -118,35 +120,41 @@
                         }
                     }
 
-                    // FILTRO CRÍTICO: Si no pertenece a ningún banco de la lista, descartamos la fila (ignora metadatos JSON)
-                    if (!bancoDetectado) {
-                        continue;
-                    }
+                    // Filtro base: si no tiene un banco mapeado, se descarta
+                    if (!bancoDetectado) continue;
 
                     // 2. Detección absoluta de Sentimiento
                     let veredicto = "Neutral";
-                    if (lineaOriginal.includes("Positivo")) {
-                        veredicto = "Positivo";
-                    } else if (lineaOriginal.includes("Negativo")) {
-                        veredicto = "Negativo";
-                    }
+                    if (lineaOriginal.includes("Positivo")) veredicto = "Positivo";
+                    else if (lineaOriginal.includes("Negativo")) veredicto = "Negativo";
 
-                    // 3. Extracción limpia y segura del Titular de la noticia
-                    const fragmentos = lineaOriginal.split('"');
+                    // 3. Extracción limpia del Titular aislando el Prompt de KNIME
                     let titular = "";
                     
-                    if (fragmentos.length > 1) {
-                        titular = fragmentos.reduce((max, str) => str.length > max.length ? str : max, "");
+                    // Si la celda contiene la estructura del prompt, cortamos justo después de "Noticia:"
+                    if (lineaOriginal.includes("Noticia:")) {
+                        const partes = lineaOriginal.split("Noticia:");
+                        titular = partes[1]; // Nos quedamos estrictamente con el bloque de la noticia
                     } else {
-                        titular = lineaOriginal.split(',')[0];
+                        // Caída de seguridad tradicional por comillas
+                        const fragmentos = lineaOriginal.split('"');
+                        titular = fragmentos.length > 1 
+                            ? fragmentos.reduce((max, str) => str.length > max.length ? str : max, "")
+                            : lineaOriginal.split(',')[0];
                     }
 
-                    titular = titular.replace(/^[,\s]+|[,\s]+$/g, '').trim();
+                    // Limpieza profunda de comas, comillas de escape de JSON y barras finales
+                    titular = titular.replace(/[\\"}]+/g, '') // Elimina escapes de JSON como \", } o "
+                                     .replace(/^[,\s|]+|[,\s|]+$/g, '') // Poda caracteres sueltos en los extremos
+                                     .trim();
 
-                    // Si por algún motivo el texto quedó vacío tras la limpieza, saltamos la iteración
-                    if (titular === "") continue;
+                    // Control estricto de duplicados y vacíos
+                    if (titular === "" || titularesProcesados.has(titular.toLowerCase())) {
+                        continue;
+                    }
+                    titularesProcesados.add(titular.toLowerCase());
 
-                    // Asignación de clases estéticas de Bootstrap para los badges
+                    // Estilo de las etiquetas
                     let badgeColor = 'bg-secondary';
                     if (veredicto === 'Positivo') badgeColor = 'bg-success';
                     if (veredicto === 'Negativo') badgeColor = 'bg-danger';
