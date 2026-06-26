@@ -101,23 +101,15 @@
                 const cuerpoTabla = document.getElementById('cuerpo-tabla');
                 cuerpoTabla.innerHTML = ""; 
 
+                // Lista de bancos oficiales bajo monitoreo
                 const bancosConocidos = ["santander", "galicia", "bbva", "macro"];
 
-                // Empezamos en 1 para ignorar la fila de títulos del CSV de forma segura
                 for (let i = 1; i < filas.length; i++) {
                     const lineaOriginal = filas[i].trim();
                     if (lineaOriginal === '') continue;
 
-                    // 1. Detección absoluta de Sentimiento
-                    let veredicto = "Neutral";
-                    if (lineaOriginal.includes("Positivo")) {
-                        veredicto = "Positivo";
-                    } else if (lineaOriginal.includes("Negativo")) {
-                        veredicto = "Negativo";
-                    }
-
-                    // 2. Detección absoluta de Entidad
-                    let bancoDetectado = "GENERAL";
+                    // 1. Identificación absoluta de Entidad por palabra clave
+                    let bancoDetectado = null;
                     const lineaLower = lineaOriginal.toLowerCase();
                     for (let b of bancosConocidos) {
                         if (lineaLower.includes(b)) {
@@ -126,26 +118,35 @@
                         }
                     }
 
-                    // 3. Extracción limpia del Titular
-                    // Buscamos el bloque de texto principal encerrado entre comillas para no romper nada
+                    // FILTRO CRÍTICO: Si no pertenece a ningún banco de la lista, descartamos la fila (ignora metadatos JSON)
+                    if (!bancoDetectado) {
+                        continue;
+                    }
+
+                    // 2. Detección absoluta de Sentimiento
+                    let veredicto = "Neutral";
+                    if (lineaOriginal.includes("Positivo")) {
+                        veredicto = "Positivo";
+                    } else if (lineaOriginal.includes("Negativo")) {
+                        veredicto = "Negativo";
+                    }
+
+                    // 3. Extracción limpia y segura del Titular de la noticia
                     const fragmentos = lineaOriginal.split('"');
                     let titular = "";
                     
                     if (fragmentos.length > 1) {
-                        // El fragmento con más caracteres siempre es el titular real
                         titular = fragmentos.reduce((max, str) => str.length > max.length ? str : max, "");
                     } else {
-                        // Si KNIME no exportó con comillas, toma la primera parte de la línea
                         titular = lineaOriginal.split(',')[0];
                     }
 
-                    // Limpieza cosmética de comas sueltas en las puntas del texto
                     titular = titular.replace(/^[,\s]+|[,\s]+$/g, '').trim();
 
-                    // Control de contingencia por si se lee una línea vacía
+                    // Si por algún motivo el texto quedó vacío tras la limpieza, saltamos la iteración
                     if (titular === "") continue;
 
-                    // Colores de las etiquetas
+                    // Asignación de clases estéticas de Bootstrap para los badges
                     let badgeColor = 'bg-secondary';
                     if (veredicto === 'Positivo') badgeColor = 'bg-success';
                     if (veredicto === 'Negativo') badgeColor = 'bg-danger';
