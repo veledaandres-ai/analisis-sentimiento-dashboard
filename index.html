@@ -101,14 +101,14 @@
                 const cuerpoTabla = document.getElementById('cuerpo-tabla');
                 cuerpoTabla.innerHTML = ""; 
 
-                // Lista de bancos que sabemos que existen en tu análisis para identificarlos con precisión
                 const bancosConocidos = ["santander", "galicia", "bbva", "macro"];
 
+                // Empezamos en 1 para ignorar la fila de títulos del CSV de forma segura
                 for (let i = 1; i < filas.length; i++) {
                     const lineaOriginal = filas[i].trim();
                     if (lineaOriginal === '') continue;
 
-                    // 1. Extraer el veredicto real de forma absoluta e infalible
+                    // 1. Detección absoluta de Sentimiento
                     let veredicto = "Neutral";
                     if (lineaOriginal.includes("Positivo")) {
                         veredicto = "Positivo";
@@ -116,8 +116,8 @@
                         veredicto = "Negativo";
                     }
 
-                    // 2. Identificar el banco buscando la coincidencia en la fila entera
-                    let bancoDetectado = "Desconocido";
+                    // 2. Detección absoluta de Entidad
+                    let bancoDetectado = "GENERAL";
                     const lineaLower = lineaOriginal.toLowerCase();
                     for (let b of bancosConocidos) {
                         if (lineaLower.includes(b)) {
@@ -126,28 +126,26 @@
                         }
                     }
 
-                    // 3. Reconstruir el titular de manera limpia
-                    // Separamos por comillas para extraer el texto largo de la noticia de forma segura
-                    const fragmentos ConComillas = lineaOriginal.split('"');
+                    // 3. Extracción limpia del Titular
+                    // Buscamos el bloque de texto principal encerrado entre comillas para no romper nada
+                    const fragmentos = lineaOriginal.split('"');
                     let titular = "";
                     
-                    if (fragmentosConComillas.length > 1) {
-                        // El fragmento más largo suele ser el titular de la noticia real
-                        titular = fragmentosConComillas.reduce((max, str) => str.length > max.length ? str : max, "");
+                    if (fragmentos.length > 1) {
+                        // El fragmento con más caracteres siempre es el titular real
+                        titular = fragmentos.reduce((max, str) => str.length > max.length ? str : max, "");
                     } else {
-                        // Si no hay comillas, tomamos el fragmento inicial antes de la primera coma
+                        // Si KNIME no exportó con comillas, toma la primera parte de la línea
                         titular = lineaOriginal.split(',')[0];
                     }
 
-                    // Limpieza final de caracteres remanentes en el titular
+                    // Limpieza cosmética de comas sueltas en las puntas del texto
                     titular = titular.replace(/^[,\s]+|[,\s]+$/g, '').trim();
 
-                    // Si la fila está vacía o es un encabezado duplicado accidental, la salteamos
-                    if (titular.toLowerCase().includes("titular_noticia") || titular === "") {
-                        continue;
-                    }
+                    // Control de contingencia por si se lee una línea vacía
+                    if (titular === "") continue;
 
-                    // Asignación de colores para los Badges del Veredicto
+                    // Colores de las etiquetas
                     let badgeColor = 'bg-secondary';
                     if (veredicto === 'Positivo') badgeColor = 'bg-success';
                     if (veredicto === 'Negativo') badgeColor = 'bg-danger';
