@@ -10,9 +10,28 @@
         .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .header-banner { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 40px 20px; border-radius: 0 0 15px 15px; margin-bottom: 30px; }
         
-        /* Ajuste para que los gráficos no se achaten ni se estiren horizontalmente */
-        .chart-container { max-width: 320px; margin: 0 auto; padding: 10px; }
-        .chart-img { width: 100%; height: auto; display: block; object-fit: contain; }
+        /* Contenedor flexible para darles espacio real a los gráficos */
+        .charts-flex-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 25px; 
+            padding: 10px; 
+        }
+        .chart-box {
+            background: #white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .chart-img { 
+            width: 100%; 
+            max-width: 480px; /* Tamaño ideal intermedio */
+            height: auto; 
+            display: block; 
+            margin: 10px auto 0 auto;
+            object-fit: contain; 
+        }
         
         .badge-banco { background-color: #e9ecef; color: #495057; font-weight: 600; border: 1px solid #ced4da; }
     </style>
@@ -40,22 +59,14 @@
             <div class="col-md-8">
                 <div class="card p-4">
                     <h4 class="text-secondary mb-3">Reportes Visuales Exportados</h4>
-                    <div class="row">
-                        <div class="col-md-6 text-center">
-                            <div class="border rounded bg-white p-2">
-                                <h6 class="fw-bold mt-2">Distribución de Sentimiento</h6>
-                                <div class="chart-container">
-                                    <img src="bar_chart.png" alt="Gráfico de Barras" class="chart-img">
-                                </div>
-                            </div>
+                    <div class="charts-flex-container">
+                        <div class="chart-box">
+                            <h6 class="fw-bold m-0">Distribución de Sentimiento</h6>
+                            <img src="bar_chart.png" alt="Gráfico de Barras" class="chart-img">
                         </div>
-                        <div class="col-md-6 text-center">
-                            <div class="border rounded bg-white p-2">
-                                <h6 class="fw-bold mt-2">Porcentaje de Impacto</h6>
-                                <div class="chart-container">
-                                    <img src="pie_chart.png" alt="Gráfico de Torta" class="chart-img">
-                                </div>
-                            </div>
+                        <div class="chart-box">
+                            <h6 class="fw-bold m-0">Porcentaje de Impacto</h6>
+                            <img src="pie_chart.png" alt="Gráfico de Torta" class="chart-img">
                         </div>
                     </div>
                 </div>
@@ -87,32 +98,31 @@
                 const respuesta = await fetch('resultados_sentiment.csv');
                 const texto = await respuesta.text();
                 
-                // Separar filas respetando los saltos de línea estándar
+                // Separar filas por salto de línea
                 const filas = texto.split(/\r?\n/);
                 const cuerpoTabla = document.getElementById('cuerpo-tabla');
-                cuerpoTabla.innerHTML = ""; // Limpiar tabla anterior
+                cuerpoTabla.innerHTML = ""; 
 
-                // Guardamos los nombres de la cabecera para buscar las columnas de forma dinámica y segura
+                // Analizamos la cabecera para ver las posiciones reales de las columnas
                 const cabecera = filas[0].split(',').map(h => h.replace(/"/g, '').trim());
                 
-                // Buscamos los índices reales de las columnas en tu nuevo CSV
-                const idxBanco = cabecera.indexOf('Banco');
-                const idxTitular = cabecera.indexOf('Titular_Noticia');
+                // Buscamos dinámicamente las posiciones clave en el CSV
+                let posBanco = cabecera.indexOf('Banco');
+                let posTitular = cabecera.indexOf('Titular_Noticia');
                 
-                // Buscamos la columna del sentimiento procesada por el Cell Splitter (es la primera parte del split)
-                const idxVeredicto = cabecera.findIndex(h => h.includes('respuesta_ia_Arr') && h.includes('0')) !== -1 
-                    ? cabecera.findIndex(h => h.includes('respuesta_ia_Arr') && h.includes('0'))
-                    : cabecera.indexOf('respuesta_ia_Arr[0]'); 
+                // Buscamos la columna de veredicto que genera tu Cell Splitter
+                let posVeredicto = cabecera.findIndex(h => h.includes('respuesta_ia_Arr') && h.includes('0'));
+                if (posVeredicto === -1) posVeredicto = cabecera.indexOf('respuesta_ia_Arr[0]');
 
-                // Si por alguna razón los índices fallan, dejamos los genéricos del nuevo layout
-                const posBanco = idxBanco !== -1 ? idxBanco : 1;
-                const posTitular = idxTitular !== -1 ? idxTitular : 2;
-                const posVeredicto = idxVeredicto !== -1 ? idxVeredicto : 11; // Suele quedar al final de la fila
+                // Si por algún motivo KNIME no exportó cabeceras legibles, usamos los índices por defecto:
+                if (posBanco === -1) posBanco = 1;
+                if (posTitular === -1) posTitular = 2;
+                if (posVeredicto === -1) posVeredicto = 11; 
 
                 for (let i = 1; i < filas.length; i++) {
                     if (filas[i].trim() === '') continue;
 
-                    // Procesamiento para separar por comas de forma segura
+                    // Parseador seguro de CSV para manejar celdas que contienen comas internas
                     const columnas = [];
                     let dentroDeComillas = false;
                     let columnaActual = '';
@@ -129,25 +139,30 @@
                     }
                     columnas.push(columnaActual.trim());
 
-                    // Mapeo exacto basado en la posición real de las columnas
-                    const banco = columnas[posBanco] ? columnas[posBanco].replace(/"/g, '') : "N/A";
-                    const titular = columnas[posTitular] ? columnas[posTitular].replace(/"/g, '') : "Sin texto";
-                    const veredictoRaw = columnas[posVeredicto] ? columnas[posVeredicto].replace(/"/g, '').trim() : "Neutral";
+                    // Extraemos los valores de las posiciones detectadas
+                    const banco = columnas[posBanco] ? columnas[posBanco].replace(/"/g, '').trim() : "";
+                    const titular = columnas[posTitular] ? columnas[posTitular].replace(/"/g, '').trim() : "";
+                    const veredictoRaw = columnas[posVeredicto] ? columnas[posVeredicto].replace(/"/g, '').trim() : "";
 
                     // ==========================================
-                    // FILTRO DE FILAS BASURA
-                    // Si la fila no tiene un banco válido, o dice "Sin texto", o vino vacía de KNIME, la salteamos
+                    // FILTRO DE REGISTROS VACÍOS O BASURA
                     // ==========================================
-                    if (banco === "N/A" || titular === "Sin texto" || titular.trim() === "" || banco.trim() === "") {
+                    if (!banco || banco === "N/A" || banco === "Sin texto" || !titular || titular === "Sin texto") {
                         continue; 
                     }
 
-                    // Limpiamos si el veredicto trae el comentario largo o la barra suelta para dejar solo la palabra clave
+                    // Clasificación estricta analizando el contenido real de la columna de IA
                     let veredicto = "Neutral";
-                    if (veredictoRaw.toLowerCase().includes('posit')) veredicto = 'Positivo';
-                    if (veredictoRaw.toLowerCase().includes('negat')) veredicto = 'Negativo';
+                    const vLower = veredictoRaw.toLowerCase();
+                    if (vLower.includes('posit')) veredicto = 'Positivo';
+                    else if (vLower.includes('negat')) veredicto = 'Negativo';
 
-                    // Asignación dinámica de colores para las etiquetas de sentimiento
+                    // Si la celda entera era directamente "positivo" o "negativo"
+                    if (veredictoRaw === "Positivo" || veredictoRaw === "Negativo") {
+                        veredicto = veredictoRaw;
+                    }
+
+                    // Colores de los Badges según el veredicto real
                     let badgeColor = 'bg-secondary';
                     if (veredicto === 'Positivo') badgeColor = 'bg-success';
                     if (veredicto === 'Negativo') badgeColor = 'bg-danger';
@@ -161,7 +176,7 @@
                     cuerpoTabla.innerHTML += filaHTML;
                 }
             } catch (error) {
-                console.error("Error al mapear el CSV de KNIME:", error);
+                console.error("Error al procesar el CSV:", error);
             }
         }
         cargarDatosKNIME();
