@@ -1,9 +1,485 @@
-"ID","Banco","Titular_Noticia","Mode(Titular_Noticia_SplitResultList_replaced)"
-1,"Galicia","Banco Galicia concreta la compra de la operacion local del HSBC en Argentina","Positivo"
-2,"Santander","Santander sufre un hackeo global que expone datos de millones de clientes y empleados","Negativo"
-3,"BBVA","BBVA gana un 38% mas en el primer trimestre impulsado por sus filiales de Mexico y España","Positivo"
-5,"BBVA","La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado","Negativo"
-8,"Macro","Banco Macro reporta un incremento en el ratio de morosidad de su cartera de consumo minorista","Negativo"
-9,"Santander","Standard & Poor's eleva la calificacion crediticia de Banco Santander a perspectiva estable","Positivo"
-12,"Galicia","Usuarios reportan fallas masivas en la app de Galicia y home banking durante el dia de cobro","Negativo"
-14,"BBVA","BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero","Negativo"
+"ID","Banco","Titular_Noticia","Fecha","Impacto_Riesgo","Titular_Noticia_SplitResultList","Titular_Noticia_SplitResultList_replaced","body_peticion","Status","Content type","body","respuesta_ia","respuesta_ia_Arr[0]","respuesta_ia_Arr[1]"
+1,"Galicia","Banco Galicia concreta la compra de la operacion local del HSBC en Argentina","2024-04-09","Alta exposicion / Crecimiento","compra","Positivo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Banco Galicia concreta la compra de la operacion local del HSBC en Argentina""}]}",200,"application/json","{
+  ""id"" : ""gen-1782491997-MZdO365VxrGJlw6ptnwQ"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782491997,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Positivo | Banco Galicia fortalece su posición en el mercado argentino con la adquisición de HSBC."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 143,
+    ""completion_tokens"" : 26,
+    ""total_tokens"" : 169,
+    ""cost"" : 0.0000494312,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000494312,
+      ""upstream_inference_prompt_cost"" : 0.0000286286,
+      ""upstream_inference_completions_cost"" : 0.0000208026
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Positivo | Banco Galicia fortalece su posición en el mercado argentino con la adquisición de HSBC.","Positivo","Banco Galicia fortalece su posición en el mercado argentino con la adquisición de HSBC."
+2,"Santander","Santander sufre un hackeo global que expone datos de millones de clientes y empleados","2024-05-14","Alto Riesgo Ciberseguridad","hackeo","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Santander sufre un hackeo global que expone datos de millones de clientes y empleados""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492000-Xegx9BLEGtz1efYp7DSv"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492000,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Negativo | Santander enfrenta una grave vulnerabilidad de seguridad que compromete información sensible de millones de personas."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 144,
+    ""completion_tokens"" : 23,
+    ""total_tokens"" : 167,
+    ""cost"" : 0.0000472311,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000472311,
+      ""upstream_inference_prompt_cost"" : 0.0000288288,
+      ""upstream_inference_completions_cost"" : 0.0000184023
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Negativo | Santander enfrenta una grave vulnerabilidad de seguridad que compromete información sensible de millones de personas.","Negativo","Santander enfrenta una grave vulnerabilidad de seguridad que compromete información sensible de millones de personas."
+2,"Santander","Santander sufre un hackeo global que expone datos de millones de clientes y empleados","2024-05-14","Alto Riesgo Ciberseguridad","expone","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Santander sufre un hackeo global que expone datos de millones de clientes y empleados""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492001-ZC8VRvyupm9aHy8iga9H"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492001,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Negativo | Santander enfrenta una grave violación de seguridad que compromete información sensible de millones de personas."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 144,
+    ""completion_tokens"" : 23,
+    ""total_tokens"" : 167,
+    ""cost"" : 0.0000472311,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000472311,
+      ""upstream_inference_prompt_cost"" : 0.0000288288,
+      ""upstream_inference_completions_cost"" : 0.0000184023
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Negativo | Santander enfrenta una grave violación de seguridad que compromete información sensible de millones de personas.","Negativo","Santander enfrenta una grave violación de seguridad que compromete información sensible de millones de personas."
+3,"BBVA","BBVA gana un 38% mas en el primer trimestre impulsado por sus filiales de Mexico y España","2024-04-30","Bajo Riesgo Financiero","gana","Positivo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: BBVA gana un 38% mas en el primer trimestre impulsado por sus filiales de Mexico y España""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492003-KTRYpaq4PgaGwIaAIXoL"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492003,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Positivo | BBVA registra un crecimiento significativo en sus ganancias gracias al desempeño de sus filiales en México y España."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 148,
+    ""completion_tokens"" : 30,
+    ""total_tokens"" : 178,
+    ""cost"" : 0.0000536326,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000536326,
+      ""upstream_inference_prompt_cost"" : 0.0000296296,
+      ""upstream_inference_completions_cost"" : 0.000024003
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Positivo | BBVA registra un crecimiento significativo en sus ganancias gracias al desempeño de sus filiales en México y España.","Positivo","BBVA registra un crecimiento significativo en sus ganancias gracias al desempeño de sus filiales en México y España."
+5,"BBVA","La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado","2025-06-18","Riesgo Regulatorio / Legal","investiga","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492005-x1JE90nwUQpzdWIpODET"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492005,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""Novita"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Negativo | La CNMV investiga a BBVA por posibles irregularidades en contrataciones pasadas, lo que genera preocupación."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 144,
+    ""completion_tokens"" : 27,
+    ""total_tokens"" : 171,
+    ""cost"" : 0.0000927,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000927,
+      ""upstream_inference_prompt_cost"" : 0.0000576,
+      ""upstream_inference_completions_cost"" : 0.0000351
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Negativo | La CNMV investiga a BBVA por posibles irregularidades en contrataciones pasadas, lo que genera preocupación.","Negativo","La CNMV investiga a BBVA por posibles irregularidades en contrataciones pasadas, lo que genera preocupación."
+5,"BBVA","La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado","2025-06-18","Riesgo Regulatorio / Legal","irregularidades","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492007-5aZtT3iYVUsitrAcnsiu"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492007,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Negativo | BBVA enfrenta una investigación por posibles irregularidades en contrataciones anteriores."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 144,
+    ""completion_tokens"" : 19,
+    ""total_tokens"" : 163,
+    ""cost"" : 0.00006299,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00006299,
+      ""upstream_inference_prompt_cost"" : 0.00004608,
+      ""upstream_inference_completions_cost"" : 0.00001691
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Negativo | BBVA enfrenta una investigación por posibles irregularidades en contrataciones anteriores.","Negativo","BBVA enfrenta una investigación por posibles irregularidades en contrataciones anteriores."
+8,"Macro","Banco Macro reporta un incremento en el ratio de morosidad de su cartera de consumo minorista","2024-08-14","Alto Riesgo Crediticio","morosidad","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Banco Macro reporta un incremento en el ratio de morosidad de su cartera de consumo minorista""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492009-bfOqnYlLHDp2hErjUcXy"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492009,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Negativo | Banco Macro enfrenta un aumento en la morosidad de su cartera de consumo minorista."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 146,
+    ""completion_tokens"" : 24,
+    ""total_tokens"" : 170,
+    ""cost"" : 0.00006808,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00006808,
+      ""upstream_inference_prompt_cost"" : 0.00004672,
+      ""upstream_inference_completions_cost"" : 0.00002136
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Negativo | Banco Macro enfrenta un aumento en la morosidad de su cartera de consumo minorista.","Negativo","Banco Macro enfrenta un aumento en la morosidad de su cartera de consumo minorista."
+9,"Santander","Standard & Poor's eleva la calificacion crediticia de Banco Santander a perspectiva estable","2025-03-11","Reduccion de Riesgo","eleva","Positivo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Standard & Poor's eleva la calificacion crediticia de Banco Santander a perspectiva estable""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492010-M1L4c3y4Ud0yrKGCYwlY"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492010,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Positivo | Standard & Poor's mejora la perspectiva crediticia de Banco Santander, indicando mayor confianza en su solidez financiera."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 143,
+    ""completion_tokens"" : 31,
+    ""total_tokens"" : 174,
+    ""cost"" : 0.0000534317,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000534317,
+      ""upstream_inference_prompt_cost"" : 0.0000286286,
+      ""upstream_inference_completions_cost"" : 0.0000248031
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Positivo | Standard & Poor's mejora la perspectiva crediticia de Banco Santander, indicando mayor confianza en su solidez financiera.","Positivo","Standard & Poor's mejora la perspectiva crediticia de Banco Santander, indicando mayor confianza en su solidez financiera."
+12,"Galicia","Usuarios reportan fallas masivas en la app de Galicia y home banking durante el dia de cobro","2025-05-02","Riesgo Operativo / Reputacional","fallas","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Usuarios reportan fallas masivas en la app de Galicia y home banking durante el dia de cobro""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492012-53DGIWNHvyFA3GjUgzvl"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492012,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Negativo | La app y home banking del Galicia tuvieron fallas masivas durante el día de cobro, afectando a los usuarios."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 148,
+    ""completion_tokens"" : 32,
+    ""total_tokens"" : 180,
+    ""cost"" : 0.00007584,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00007584,
+      ""upstream_inference_prompt_cost"" : 0.00004736,
+      ""upstream_inference_completions_cost"" : 0.00002848
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Negativo | La app y home banking del Galicia tuvieron fallas masivas durante el día de cobro, afectando a los usuarios.","Negativo","La app y home banking del Galicia tuvieron fallas masivas durante el día de cobro, afectando a los usuarios."
+14,"BBVA","BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero","2024-11-19","Alto Riesgo de Cumplimiento","multa","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492014-wWmJLvFtO0ksy4Etf9gY"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492014,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Negativo | BBVA fue sancionado económicamente por incumplir normas contra el lavado de dinero."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 149,
+    ""completion_tokens"" : 27,
+    ""total_tokens"" : 176,
+    ""cost"" : 0.00007171,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00007171,
+      ""upstream_inference_prompt_cost"" : 0.00004768,
+      ""upstream_inference_completions_cost"" : 0.00002403
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Negativo | BBVA fue sancionado económicamente por incumplir normas contra el lavado de dinero.","Negativo","BBVA fue sancionado económicamente por incumplir normas contra el lavado de dinero."
+14,"BBVA","BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero","2024-11-19","Alto Riesgo de Cumplimiento","fallas","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero""}]}",200,"application/json","{
+  ""id"" : ""gen-1782492015-UYVDgoPA2096KNVFS4o5"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1782492015,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""Negativo | BBVA fue penalizado con una multa considerable debido a deficiencias en sus sistemas contra el lavado de dinero."",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 149,
+    ""completion_tokens"" : 28,
+    ""total_tokens"" : 177,
+    ""cost"" : 0.0000726,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000726,
+      ""upstream_inference_prompt_cost"" : 0.00004768,
+      ""upstream_inference_completions_cost"" : 0.00002492
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","Negativo | BBVA fue penalizado con una multa considerable debido a deficiencias en sus sistemas contra el lavado de dinero.","Negativo","BBVA fue penalizado con una multa considerable debido a deficiencias en sus sistemas contra el lavado de dinero."
