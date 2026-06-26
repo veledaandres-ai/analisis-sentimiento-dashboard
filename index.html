@@ -10,7 +10,6 @@
         .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .header-banner { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 40px 20px; border-radius: 0 0 15px 15px; margin-bottom: 30px; }
         
-        /* Contenedor flexible para darles espacio real a los gráficos */
         .charts-flex-container { 
             display: flex; 
             flex-direction: column; 
@@ -18,7 +17,7 @@
             padding: 10px; 
         }
         .chart-box {
-            background: #white;
+            background: white;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             padding: 15px;
@@ -26,14 +25,14 @@
         }
         .chart-img { 
             width: 100%; 
-            max-width: 480px; /* Tamaño ideal intermedio */
+            max-width: 460px; 
             height: auto; 
             display: block; 
             margin: 10px auto 0 auto;
             object-fit: contain; 
         }
         
-        .badge-banco { background-color: #e9ecef; color: #495057; font-weight: 600; border: 1px solid #ced4da; }
+        .badge-banco { background-color: #e9ecef; color: #495057; font-weight: 600; border: 1px solid #ced4da; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -50,7 +49,7 @@
                 <div class="card p-4">
                     <h4 class="text-primary mb-3">Sobre el Análisis</h4>
                     <p>Este panel expone en tiempo real los resultados de la ingeniería de datos realizada sobre titulares de la prensa económica.</p>
-                    <p>El motor léxico local clasifica las palabras individualmente y determina la tendencia mediante un proceso de agregación estadística (Moda).</p>
+                    <p>El motor léxico local clasifica las palabras individualmente y determina la tendencia mediante un proceso de análisis con Inteligencia Artificial.</p>
                     <hr>
                     <p class="text-muted small">Desplegado automáticamente mediante integración continua en Vercel.</p>
                 </div>
@@ -98,77 +97,63 @@
                 const respuesta = await fetch('resultados_sentiment.csv');
                 const texto = await respuesta.text();
                 
-                // Separar filas por salto de línea
                 const filas = texto.split(/\r?\n/);
                 const cuerpoTabla = document.getElementById('cuerpo-tabla');
                 cuerpoTabla.innerHTML = ""; 
 
-                // Analizamos la cabecera para ver las posiciones reales de las columnas
-                const cabecera = filas[0].split(',').map(h => h.replace(/"/g, '').trim());
-                
-                // Buscamos dinámicamente las posiciones clave en el CSV
-                let posBanco = cabecera.indexOf('Banco');
-                let posTitular = cabecera.indexOf('Titular_Noticia');
-                
-                // Buscamos la columna de veredicto que genera tu Cell Splitter
-                let posVeredicto = cabecera.findIndex(h => h.includes('respuesta_ia_Arr') && h.includes('0'));
-                if (posVeredicto === -1) posVeredicto = cabecera.indexOf('respuesta_ia_Arr[0]');
-
-                // Si por algún motivo KNIME no exportó cabeceras legibles, usamos los índices por defecto:
-                if (posBanco === -1) posBanco = 1;
-                if (posTitular === -1) posTitular = 2;
-                if (posVeredicto === -1) posVeredicto = 11; 
+                // Lista de bancos que sabemos que existen en tu análisis para identificarlos con precisión
+                const bancosConocidos = ["santander", "galicia", "bbva", "macro"];
 
                 for (let i = 1; i < filas.length; i++) {
-                    if (filas[i].trim() === '') continue;
+                    const lineaOriginal = filas[i].trim();
+                    if (lineaOriginal === '') continue;
 
-                    // Parseador seguro de CSV para manejar celdas que contienen comas internas
-                    const columnas = [];
-                    let dentroDeComillas = false;
-                    let columnaActual = '';
+                    // 1. Extraer el veredicto real de forma absoluta e infalible
+                    let veredicto = "Neutral";
+                    if (lineaOriginal.includes("Positivo")) {
+                        veredicto = "Positivo";
+                    } else if (lineaOriginal.includes("Negativo")) {
+                        veredicto = "Negativo";
+                    }
 
-                    for (let c of filas[i]) {
-                        if (c === '"') {
-                            dentroDeComillas = !dentroDeComillas;
-                        } else if (c === ',' && !dentroDeComillas) {
-                            columnas.push(columnaActual.trim());
-                            columnaActual = '';
-                        } else {
-                            columnaActual += c;
+                    // 2. Identificar el banco buscando la coincidencia en la fila entera
+                    let bancoDetectado = "Desconocido";
+                    const lineaLower = lineaOriginal.toLowerCase();
+                    for (let b of bancosConocidos) {
+                        if (lineaLower.includes(b)) {
+                            bancoDetectado = b;
+                            break;
                         }
                     }
-                    columnas.push(columnaActual.trim());
 
-                    // Extraemos los valores de las posiciones detectadas
-                    const banco = columnas[posBanco] ? columnas[posBanco].replace(/"/g, '').trim() : "";
-                    const titular = columnas[posTitular] ? columnas[posTitular].replace(/"/g, '').trim() : "";
-                    const veredictoRaw = columnas[posVeredicto] ? columnas[posVeredicto].replace(/"/g, '').trim() : "";
-
-                    // ==========================================
-                    // FILTRO DE REGISTROS VACÍOS O BASURA
-                    // ==========================================
-                    if (!banco || banco === "N/A" || banco === "Sin texto" || !titular || titular === "Sin texto") {
-                        continue; 
+                    // 3. Reconstruir el titular de manera limpia
+                    // Separamos por comillas para extraer el texto largo de la noticia de forma segura
+                    const fragmentos ConComillas = lineaOriginal.split('"');
+                    let titular = "";
+                    
+                    if (fragmentosConComillas.length > 1) {
+                        // El fragmento más largo suele ser el titular de la noticia real
+                        titular = fragmentosConComillas.reduce((max, str) => str.length > max.length ? str : max, "");
+                    } else {
+                        // Si no hay comillas, tomamos el fragmento inicial antes de la primera coma
+                        titular = lineaOriginal.split(',')[0];
                     }
 
-                    // Clasificación estricta analizando el contenido real de la columna de IA
-                    let veredicto = "Neutral";
-                    const vLower = veredictoRaw.toLowerCase();
-                    if (vLower.includes('posit')) veredicto = 'Positivo';
-                    else if (vLower.includes('negat')) veredicto = 'Negativo';
+                    // Limpieza final de caracteres remanentes en el titular
+                    titular = titular.replace(/^[,\s]+|[,\s]+$/g, '').trim();
 
-                    // Si la celda entera era directamente "positivo" o "negativo"
-                    if (veredictoRaw === "Positivo" || veredictoRaw === "Negativo") {
-                        veredicto = veredictoRaw;
+                    // Si la fila está vacía o es un encabezado duplicado accidental, la salteamos
+                    if (titular.toLowerCase().includes("titular_noticia") || titular === "") {
+                        continue;
                     }
 
-                    // Colores de los Badges según el veredicto real
+                    // Asignación de colores para los Badges del Veredicto
                     let badgeColor = 'bg-secondary';
                     if (veredicto === 'Positivo') badgeColor = 'bg-success';
                     if (veredicto === 'Negativo') badgeColor = 'bg-danger';
 
                     const filaHTML = `<tr>
-                        <td><span class="badge badge-banco px-2 py-2 w-100">${banco}</span></td>
+                        <td><span class="badge badge-banco px-2 py-2 w-100">${bancoDetectado}</span></td>
                         <td class="text-secondary fw-medium">${titular}</td>
                         <td class="text-center"><span class="badge ${badgeColor} px-3 py-2 fw-semibold">${veredicto}</span></td>
                     </tr>`;
