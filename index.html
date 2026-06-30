@@ -3,78 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Riesgo Reputacional Financiero - MVP</title>
+    <title>Monitoreo de Riesgo Reputacional - Clean SaaS</title>
+    <!-- Bootstrap 5 para grilla base -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.min.css" rel="stylesheet">
+    <!-- Fuente Plus Jakarta Sans para un look SaaS premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { background-color: #f8f9fa; font-family: sans-serif; }
-        .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .header-banner { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 40px 20px; border-radius: 0 0 15px 15px; margin-bottom: 30px; }
-        
-        .charts-flex-container { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 25px; 
-            padding: 10px; 
+        /* --- ESTÉTICA GENERAL: CLEAN SAAS LIGHT --- */
+        body { 
+            background-color: #F4F7FE; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            color: #1E293B; /* Texto oscuro principal altamente legible */
+            min-height: min-content;
         }
-        .chart-box {
-            background: white;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 15px;
+
+        /* Tarjetas de diseño premium */
+        .card-custom { 
+            background: #FFFFFF;
+            border: 1px solid rgba(226, 232, 240, 0.8); 
+            border-radius: 16px; 
+            box-shadow: 0 4px 20px -2px rgba(148, 163, 184, 0.1);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        .card-custom:hover {
+            box-shadow: 0 10px 25px -3px rgba(148, 163, 184, 0.15);
+        }
+
+        /* Banner de cabecera limpio con indicador superior de marca */
+        .header-banner { 
+            background: #FFFFFF; 
+            border-top: 5px solid #4F46E5; /* Línea de acento Indigo */
+            border-radius: 16px; 
+            padding: 32px 24px; 
+            box-shadow: 0 4px 20px -2px rgba(148, 163, 184, 0.08);
+            margin-bottom: 30px; 
+        }
+
+        /* Títulos de sección */
+        .section-title {
+            color: #1E293B;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* Imágenes de los gráficos con marco contenedor */
+        .chart-container {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
             text-align: center;
         }
         .chart-img { 
             width: 100%; 
-            max-width: 460px; 
+            max-width: 480px; 
             height: auto; 
             display: block; 
-            margin: 10px auto 0 auto;
+            margin: 12px auto 0 auto; 
             object-fit: contain; 
         }
-        
-        .badge-banco { background-color: #e9ecef; color: #495057; font-weight: 600; border: 1px solid #ced4da; text-transform: uppercase; }
+
+        /* Etiquetas para bancos y veredictos */
+        .badge-banco { 
+            background-color: #EEF2F6; 
+            color: #4F46E5; 
+            font-weight: 700; 
+            border: 1px solid #E2E8F0; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 12px;
+            display: block;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        /* Badges de Sentimiento */
+        .badge-sentimiento {
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 9999px; /* Formato píldora redondeada */
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-block;
+        }
+        .badge-positive {
+            background-color: #DEF7EC;
+            color: #03543F;
+            border: 1px solid rgba(3, 84, 63, 0.15);
+        }
+        .badge-negative {
+            background-color: #FDE8E8;
+            color: #9B1C1C;
+            border: 1px solid rgba(155, 28, 28, 0.15);
+        }
+        .badge-neutral {
+            background-color: #F1F5F9;
+            color: #475569;
+            border: 1px solid rgba(71, 85, 105, 0.15);
+        }
+
+        /* Tabla de contenidos */
+        .table thead th {
+            background-color: #F8FAFC;
+            color: #475569;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #E2E8F0;
+            padding: 14px;
+        }
+        .table tbody td {
+            padding: 16px 14px;
+            color: #334155;
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        /* Subtextos pequeños y aclaraciones */
+        .text-muted-custom {
+            color: #64748B;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="header-banner text-center">
-            <h1 class="display-5 fw-bold">Monitoreo de Riesgo Reputacional Financiero</h1>
-            <p class="lead">Fase 1: Pipeline de Procesamiento de Lenguaje Natural Nativo (MVP)</p>
-            <span class="badge bg-success px-3 py-2 fw-semibold">Datos Genuinos de KNIME Analytics Platform</span>
+    <div class="container mt-4">
+        <!-- CABECERA DEL DASHBOARD -->
+        <div class="header-banner">
+            <div class="d-flex flex-col flex-md-row justify-content-between align-items-center gap-3">
+                <div class="text-center text-md-start">
+                    <span class="text-xs font-bold text-uppercase tracking-widest text-indigo-600" style="color: #4F46E5; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em;">PROCESAMIENTO DE LENGUAJE NATURAL</span>
+                    <h1 class="display-6 section-title mt-1 m-0">Monitoreo de Riesgo Reputacional</h1>
+                </div>
+                <div class="text-center text-md-end">
+                    <span class="badge px-3 py-2 fw-bold" style="background-color: #E0E7FF; color: #4338CA; border: 1px solid rgba(67, 56, 202, 0.15); border-radius: 8px;">
+                        Datos Reales de KNIME Platform
+                    </span>
+                </div>
+            </div>
         </div>
 
         <div class="row">
+            <!-- COLUMNA IZQUIERDA: EXPLICATIVO Y METADATOS -->
             <div class="col-md-4">
-                <div class="card p-4">
-                    <h4 class="text-primary mb-3">Sobre el Análisis</h4>
-                    <p>Este panel expone en tiempo real los resultados de la ingeniería de datos realizada sobre titulares de la prensa económica.</p>
-                    <p>El motor léxico local clasifica las palabras individualmente y determina la tendencia mediante un proceso de análisis con Inteligencia Artificial.</p>
-                    <hr>
-                    <p class="text-muted small">Desplegado automáticamente mediante integración continua en Vercel.</p>
+                <div class="card-custom">
+                    <h4 class="text-indigo-600 mb-3" style="color: #4F46E5; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;">Fase 1: MVP NLP</h4>
+                    <p class="text-muted-custom mb-3">
+                        Este panel expone en tiempo real los resultados de la ingeniería de datos realizada sobre titulares de la prensa económica.
+                    </p>
+                    <p class="text-muted-custom mb-3">
+                        El motor de datos extrae la información, remueve los prompts de consulta y clasifica de forma nativa a través del modelo de Inteligencia Artificial.
+                    </p>
+                    <hr style="border-color: #E2E8F0; opacity: 1; margin: 20px 0;">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-circle bg-emerald-500 inline-block" style="width: 10px; height: 10px; background-color: #10B981;"></span>
+                        <p class="m-0 text-muted-custom" style="font-size: 0.8rem; font-weight: 600;">Despliegue Continuo con Vercel</p>
+                    </div>
                 </div>
             </div>
 
+            <!-- COLUMNA DERECHA: REPORTES GRÁFICOS Y TABLA DE NOTICIAS -->
             <div class="col-md-8">
-                <div class="card p-4">
-                    <h4 class="text-secondary mb-3">Reportes Visuales Exportados</h4>
-                    <div class="charts-flex-container">
-                        <div class="chart-box">
-                            <h6 class="fw-bold m-0">Distribución de Sentimiento</h6>
-                            <img src="bar_chart.png" alt="Gráfico de Barras" class="chart-img">
+                
+                <!-- SECCIÓN DE GRÁFICOS -->
+                <div class="card-custom">
+                    <h4 class="section-title mb-4" style="font-size: 1.25rem;">Reportes Visuales Exportados</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="chart-container">
+                                <h6 class="fw-bold mt-1" style="color: #475569; font-size: 0.9rem;">Distribución de Sentimiento</h6>
+                                <img src="bar_chart.png" alt="Gráfico de Barras" class="chart-img">
+                            </div>
                         </div>
-                        <div class="chart-box">
-                            <h6 class="fw-bold m-0">Porcentaje de Impacto</h6>
-                            <img src="pie_chart.png" alt="Gráfico de Torta" class="chart-img">
+                        <div class="col-md-12">
+                            <div class="chart-container">
+                                <h6 class="fw-bold mt-1" style="color: #475569; font-size: 0.9rem;">Porcentaje de Impacto</h6>
+                                <img src="pie_chart.png" alt="Gráfico de Torta" class="chart-img">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card p-4">
-                    <h5 class="fw-bold mb-3">Monitoreo de Entidades Cobertura (Datos Reales de KNIME)</h5>
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle">
-                            <thead class="table-dark">
+                <!-- SECCIÓN DE TABLA DE NOTICIAS -->
+                <div class="card-custom">
+                    <h5 class="section-title mb-4" style="font-size: 1.25rem;">Monitoreo de Entidades Cobertura</h5>
+                    <div class="table-responsive" style="border-radius: 12px; border: 1px solid #E2E8F0; overflow: hidden;">
+                        <table class="table table-hover align-middle m-0">
+                            <thead>
                                 <tr>
                                     <th style="width: 150px;">Entidad</th>
                                     <th>Titular de la Noticia Financiera</th>
@@ -82,6 +203,7 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpo-tabla">
+                                <!-- Las filas se generan de forma dinámica por JavaScript -->
                             </tbody>
                         </table>
                     </div>
@@ -91,6 +213,7 @@
         </div>
     </div>
 
+    <!-- SCRIPT DE MAPEO E INTEGRACIÓN DE DATOS -->
     <script>
         async function cargarDatosKNIME() {
             try {
@@ -102,8 +225,6 @@
                 cuerpoTabla.innerHTML = ""; 
 
                 const bancosConocidos = ["santander", "galicia", "bbva", "macro"];
-                
-                // Set para evitar la duplicación de titulares en la interfaz web
                 const titularesProcesados = new Set();
 
                 for (let i = 1; i < filas.length; i++) {
@@ -120,7 +241,7 @@
                         }
                     }
 
-                    // Filtro base: si no tiene un banco mapeado, se descarta
+                    // Filtro de Entidades: si no tiene banco, se descarta (evita metadatos basuras)
                     if (!bancoDetectado) continue;
 
                     // 2. Detección absoluta de Sentimiento
@@ -128,47 +249,47 @@
                     if (lineaOriginal.includes("Positivo")) veredicto = "Positivo";
                     else if (lineaOriginal.includes("Negativo")) veredicto = "Negativo";
 
-                    // 3. Extracción limpia del Titular aislando el Prompt de KNIME
+                    // 3. Extracción limpia del Titular de la noticia removiendo el Prompt
                     let titular = "";
-                    
-                    // Si la celda contiene la estructura del prompt, cortamos justo después de "Noticia:"
                     if (lineaOriginal.includes("Noticia:")) {
                         const partes = lineaOriginal.split("Noticia:");
-                        titular = partes[1]; // Nos quedamos estrictamente con el bloque de la noticia
+                        titular = partes[1]; 
                     } else {
-                        // Caída de seguridad tradicional por comillas
                         const fragmentos = lineaOriginal.split('"');
                         titular = fragmentos.length > 1 
                             ? fragmentos.reduce((max, str) => str.length > max.length ? str : max, "")
                             : lineaOriginal.split(',')[0];
                     }
 
-                    // Limpieza profunda de comas, comillas de escape de JSON y barras finales
-                    titular = titular.replace(/[\\"}]+/g, '') // Elimina escapes de JSON como \", } o "
-                                     .replace(/^[,\s|]+|[,\s|]+$/g, '') // Poda caracteres sueltos en los extremos
+                    // Limpieza cosmética de escapes JSON y caracteres sueltos en las puntas
+                    titular = titular.replace(/[\\"}]+/g, '')
+                                     .replace(/^[,\s|]+|[,\s|]+$/g, '') 
                                      .trim();
 
-                    // Control estricto de duplicados y vacíos
+                    // Control estricto de celdas vacías o duplicados
                     if (titular === "" || titularesProcesados.has(titular.toLowerCase())) {
                         continue;
                     }
                     titularesProcesados.add(titular.toLowerCase());
 
-                    // Estilo de las etiquetas
-                    let badgeColor = 'bg-secondary';
-                    if (veredicto === 'Positivo') badgeColor = 'bg-success';
-                    if (veredicto === 'Negativo') badgeColor = 'bg-danger';
+                    // Estilo dinámico de badges basado en nuestra paleta SaaS premium
+                    let badgeEstilo = 'badge-neutral';
+                    if (veredicto === 'Positivo') badgeEstilo = 'badge-sentimiento badge-positive';
+                    else if (veredicto === 'Negativo') badgeEstilo = 'badge-sentimiento badge-negative';
+                    else badgeEstilo = 'badge-sentimiento badge-neutral';
 
                     const filaHTML = `<tr>
-                        <td><span class="badge badge-banco px-2 py-2 w-100">${bancoDetectado}</span></td>
-                        <td class="text-secondary fw-medium">${titular}</td>
-                        <td class="text-center"><span class="badge ${badgeColor} px-3 py-2 fw-semibold">${veredicto}</span></td>
+                        <td><span class="badge-banco">${bancoDetectado}</span></td>
+                        <td class="fw-semibold" style="font-size: 0.875rem; color: #334155;">${titular}</td>
+                        <td class="text-center">
+                            <span class="${badgeEstilo}">${veredicto}</span>
+                        </td>
                     </tr>`;
                     
                     cuerpoTabla.innerHTML += filaHTML;
                 }
             } catch (error) {
-                console.error("Error al procesar el CSV:", error);
+                console.error("Error al procesar el archivo CSV:", error);
             }
         }
         cargarDatosKNIME();
