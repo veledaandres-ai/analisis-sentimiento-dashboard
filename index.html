@@ -13,205 +13,222 @@
             font-family: 'Inter', sans-serif;
             background-color: #f4f6f9;
             color: #333;
+            padding: 20px;
         }
+        
+        /* Contenedor global con recuadro azul profesional */
+        .dashboard-frame {
+            border: 3px solid #1e3a8a; /* Azul Profesional */
+            border-radius: 16px;
+            background-color: #f8fafc;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        /* Cabecera superior con fondo azul profesional */
+        .dashboard-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+            padding: 30px;
+            color: #ffffff;
+        }
+        
+        .dashboard-container {
+            padding: 30px;
+        }
+        
         .card-kpi {
             border: none;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             transition: transform 0.2s;
         }
         .card-kpi:hover {
             transform: translateY(-2px);
         }
-        .dashboard-container {
-            padding: 30px;
-        }
+        
+        /* Contenedores de Gráficos con fondo blanco puro y sin bordes raros */
         .chart-container {
             background: #ffffff;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             height: 320px;
         }
+        
         .table-container {
             background: #ffffff;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            max-height: 400px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            max-height: 420px;
             overflow-y: auto;
         }
+        
         /* Badges estilizados para Sentimiento */
         .badge-positivo { background-color: #d1e7dd; color: #0f5132; padding: 5px 10px; border-radius: 20px; font-size: 0.85em; font-weight: 500; }
         .badge-negativo { background-color: #f8d7da; color: #842029; padding: 5px 10px; border-radius: 20px; font-size: 0.85em; font-weight: 500; }
         .badge-neutral { background-color: #e2e3e5; color: #41464b; padding: 5px 10px; border-radius: 20px; font-size: 0.85em; font-weight: 500; }
         
-        /* Ajustes de scrollbar para la tabla */
         .table-container::-webkit-scrollbar { width: 6px; }
         .table-container::-webkit-scrollbar-thumb { background-color: #cccccc; border-radius: 4px; }
+        
+        /* Indicador de Filtro Activo */
+        .filter-banner {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
 
-<div class="container-fluid dashboard-container">
-    <div class="row mb-4">
-        <div class="col-12">
-            <h1 class="fw-bold text-dark m-0">Análisis de Sentimiento de Noticias Financieras</h1>
-            <p class="text-muted">Análisis macroeconómico automatizado en tiempo real</p>
-        </div>
+<div class="container-fluid dashboard-frame p-0">
+    
+    <div class="dashboard-header">
+        <h1 class="fw-bold m-0 text-white">Análisis de Sentimiento de Noticias Financieras</h1>
+        <p class="m-0 opacity-75" style="font-weight: 300;">Análisis de mercado automatizado en tiempo real</p>
     </div>
 
-    <div class="row g-4">
-        
-        <div class="col-12 col-md-3 d-flex flex-column justify-content-between">
-            <div class="card card-kpi bg-primary text-white mb-3 p-3 flex-fill">
-                <div class="small text-uppercase opacity-75">Total Noticias</div>
-                <div class="display-5 fw-bold" id="kpi-total">0</div>
-            </div>
-            <div class="card card-kpi bg-white border-start border-success border-4 mb-3 p-3 flex-fill">
-                <div class="small text-muted text-uppercase fw-semibold">Sentimiento Positivo</div>
-                <div class="display-6 fw-bold text-success" id="kpi-positivos">0</div>
-            </div>
-            <div class="card card-kpi bg-white border-start border-danger border-4 mb-3 p-3 flex-fill">
-                <div class="small text-muted text-uppercase fw-semibold">Sentimiento Negativo</div>
-                <div class="display-6 fw-bold text-danger" id="kpi-negativos">0</div>
-            </div>
-            <div class="card card-kpi bg-white border-start border-secondary border-4 p-3 flex-fill">
-                <div class="small text-muted text-uppercase fw-semibold">Sentimiento Neutral</div>
-                <div class="display-6 fw-bold text-secondary" id="kpi-neutrales">0</div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-9">
-            <div class="row g-4">
-                <div class="col-12 col-md-7">
-                    <div class="chart-container">
-                        <h6 class="fw-bold text-muted mb-3 text-uppercase small">Distribución de Sentimiento</h6>
-                        <canvas id="chartBarras"></canvas>
-                    </div>
-                </div>
-                <div class="col-12 col-md-5">
-                    <div class="chart-container d-flex flex-column align-items-center">
-                        <h6 class="fw-bold text-muted mb-3 text-uppercase align-self-start small">Proporción de Impacto</h6>
-                        <div style="width: 100%; max-width: 200px;"><canvas id="chartDona"></canvas></div>
-                    </div>
-                </div>
-            </div>
+    <div class="dashboard-container">
+        <div class="row g-4">
             
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="table-container">
-                        <h6 class="fw-bold text-muted mb-3 text-uppercase small">Monitor de Noticias Recientes e Impacto (Semáforo)</h6>
-                        <table class="table table-hover align-middle m-0">
-                            <thead class="table-light sticky-top">
-                                <tr>
-                                    <th style="width: 50%;">Titular de la Noticia</th>
-                                    <th>Sentimiento</th>
-                                    <th>Impacto</th>
-                                    <th>Entidad Clave</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabla-noticias-body">
-                                <tr>
-                                    <td colspan="4" class="text-center text-muted py-4">Cargando análisis de IA...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="col-12 col-md-3 d-flex flex-column justify-content-between">
+                <div class="card card-kpi bg-primary text-white mb-3 p-3 flex-fill" style="background: #1e3a8a !important;">
+                    <div class="small text-uppercase opacity-75">Total Noticias</div>
+                    <div class="display-5 fw-bold" id="kpi-total">0</div>
+                </div>
+                <div class="card card-kpi bg-white border-start border-success border-4 mb-3 p-3 flex-fill">
+                    <div class="small text-muted text-uppercase fw-semibold">Sentimiento Positivo</div>
+                    <div class="display-6 fw-bold text-success" id="kpi-positivos">0</div>
+                </div>
+                <div class="card card-kpi bg-white border-start border-danger border-4 mb-3 p-3 flex-fill">
+                    <div class="small text-muted text-uppercase fw-semibold">Sentimiento Negativo</div>
+                    <div class="display-6 fw-bold text-danger" id="kpi-negativos">0</div>
+                </div>
+                <div class="card card-kpi bg-white border-start border-secondary border-4 p-3 flex-fill">
+                    <div class="small text-muted text-uppercase fw-semibold">Sentimiento Neutral</div>
+                    <div class="display-6 fw-bold text-secondary" id="kpi-neutrales">0</div>
                 </div>
             </div>
 
-        </div>
-    </div>
+            <div class="col-12 col-md-9">
+                <div class="row g-4">
+                    <div class="col-12 col-md-7">
+                        <div class="chart-container">
+                            <h6 class="fw-bold text-muted mb-3 text-uppercase small">Distribución de Sentimiento <span class="text-lowercase fw-normal text-muted">(clic para filtrar tabla)</span></h6>
+                            <canvas id="chartBarras"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <div class="chart-container d-flex flex-column align-items-center">
+                            <h6 class="fw-bold text-muted mb-3 text-uppercase align-self-start small">Proporción de Impacto <span class="text-lowercase fw-normal text-muted">(clic para filtrar)</span></h6>
+                            <div style="width: 100%; max-width: 190px;"><canvas id="chartDona"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div id="filterIndicator" class="filter-banner fw-medium">
+                            <span id="filterText">Filtrando datos...</span>
+                            <button class="btn btn-sm btn-link text-decoration-none p-0 fw-bold" style="color: #0369a1;" onclick="limpiarFiltros()">Mostrar todas</button>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="row mt-5 pt-3 border-top">
-        <div class="col-12 text-secondary">
-            <p class="m-0 fw-semibold">Dashboard de Inteligencia Financiera — Versión Avanzada V2</p>
-            <p class="small text-muted m-0">Infraestructura de datos automatizada mediante Yahoo Finance, Google Sheets, ETL en KNIME Analytics Platform e inferencia de modelos LLM para la categorización y extracción de riesgos.</p>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div class="table-container">
+                            <table class="table table-hover align-middle m-0">
+                                <thead class="table-light sticky-top">
+                                    <tr>
+                                        <th style="width: 50%;">Titular de la Noticia</th>
+                                        <th>Sentimiento</th>
+                                        <th>Impacto</th>
+                                        <th>Entidad Clave</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-noticias-body">
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted py-4">Cargando análisis de IA...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row mt-5 pt-3 border-top">
+            <div class="col-12 text-secondary">
+                <p class="m-0 fw-semibold">Dashboard de Inteligencia Financiera — Versión Avanzada V2</p>
+                <p class="small text-muted m-0">Infraestructura de datos automatizada mediante Yahoo Finance, Google Sheets, ETL en KNIME Analytics Platform e inferencia de modelos LLM para la categorización y extracción de riesgos.</p>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    // Variables globales para los gráficos
+    // Almacén global de las noticias crudas
+    let todasLasNoticias = [];
+    let filtroActivo = { columna: null, valor: null };
+
+    // Instancias de gráficos
     let chartBarrasInstance = null;
     let chartDonaInstance = null;
 
-    // Consumir el archivo JSON local de GitHub
+    // Consumo del JSON desde GitHub
     fetch('./noticias.json')
         .then(response => {
-            if (!response.ok) throw new Error("No se pudo cargar noticias.json");
+            if (!response.ok) throw new Error("Error leyendo JSON");
             return response.json();
         })
         .then(data => {
-            inicializarDashboard(data);
+            todasLasNoticias = data;
+            inicializarDashboard(todasLasNoticias);
         })
         .catch(error => {
-            console.error("Error inicializando el dashboard:", error);
+            console.error(error);
             document.getElementById('tabla-noticias-body').innerHTML = `
-                <tr><td colspan="4" class="text-center text-danger">Error al sincronizar con GitHub. Verifique noticias.json</td></tr>
+                <tr><td colspan="4" class="text-center text-danger">Error al sincronizar datos.</td></tr>
             `;
         });
 
     function inicializarDashboard(noticias) {
-        // 1. CÁLCULO DE MÉTRICAS KPI (Mapeado exacto con tu KNIME)
+        // Cálculo estático de KPIs iniciales basado en TODO el universo
         let total = noticias.length;
         let positivos = noticias.filter(n => n.Sentimiento === 'Positivo').length;
         let negativos = noticias.filter(n => n.Sentimiento === 'Negativo').length;
         let neutrales = noticias.filter(n => n.Sentimiento === 'Neutral').length;
 
-        // Inyectar valores en las tarjetas correspondientes
         document.getElementById('kpi-total').innerText = total;
         document.getElementById('kpi-positivos').innerText = positivos;
         document.getElementById('kpi-negativos').innerText = negativos;
         document.getElementById('kpi-neutrales').innerText = neutrales;
 
-        // Contadores para el gráfico de Impacto (Dona)
         let impactoAlto = noticias.filter(n => n.Inpacto === 'Alto' || n.Inpacto === 'High').length;
         let impactoMedio = noticias.filter(n => n.Inpacto === 'Medio' || n.Inpacto === 'Medium').length;
         let impactoBajo = noticias.filter(n => n.Inpacto === 'Bajo' || n.Inpacto === 'Low').length;
 
-        // 2. CONSTRUCCIÓN DE LA TABLA INTERACTIVA CON SEMÁFOROS
-        const cuerpoTabla = document.getElementById('tabla-noticias-body');
-        cuerpoTabla.innerHTML = ''; // Limpiar el cargando...
+        // Renderizar por primera vez la tabla (sin filtros)
+        renderizarTabla(noticias);
 
-        noticias.forEach(noticia => {
-            const fila = document.createElement('tr');
-            
-            // Lógica de Semáforos (Borde izquierdo de color según impacto de KNIME)
-            let borderColor = 'border-left: 5px solid #6c757d;'; // Gris por defecto
-            if (noticia.Inpacto === 'Alto' || noticia.Inpacto === 'High') {
-                borderColor = 'border-left: 5px solid #dc3545;'; // Rojo
-            } else if (noticia.Inpacto === 'Medio' || noticia.Inpacto === 'Medium') {
-                borderColor = 'border-left: 5px solid #ffc107;'; // Amarillo/Naranja
-            } else if (noticia.Inpacto === 'Bajo' || noticia.Inpacto === 'Low') {
-                borderColor = 'border-left: 5px solid #198754;'; // Verde
-            }
-
-            // Normalización de clases CSS para el Sentimiento
-            let badgeClass = 'badge-neutral';
-            if (noticia.Sentimiento === 'Positivo') badgeClass = 'badge-positivo';
-            if (noticia.Sentimiento === 'Negativo') badgeClass = 'badge-negativo';
-
-            fila.innerHTML = `
-                <td style="${borderColor} padding-left: 12px; font-weight: 500;">${noticia.Titular_Noticia}</td>
-                <td><span class="${badgeClass}">${noticia.Sentimiento}</span></td>
-                <td><span class="fw-bold text-dark">${noticia.Inpacto}</span></td>
-                <td class="text-muted small">${noticia.Entidad || 'General / Mercados'}</td>
-            `;
-            cuerpoTabla.appendChild(fila);
-        });
-
-        // 3. RENDERIZAR GRÁFICO DE BARRAS (Distribución de Sentimientos)
+        // CONFIGURACIÓN GRÁFICO DE BARRAS (Sin grillas de fondo)
         const ctxBarras = document.getElementById('chartBarras').getContext('2d');
-        if (chartBarrasInstance) chartBarrasInstance.destroy();
         chartBarrasInstance = new Chart(ctxBarras, {
             type: 'bar',
             data: {
                 labels: ['Positivo', 'Neutral', 'Negativo'],
                 datasets: [{
-                    label: 'Cantidad de Noticias',
-                    data: [positivos, neutrales, negatives = negativos],
+                    label: 'Noticias',
+                    data: [positivos, neutrales, negativos],
                     backgroundColor: ['#198754', '#6c757d', '#dc3545'],
                     borderRadius: 6
                 }]
@@ -220,13 +237,24 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: { legend: { display: false } },
-                scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                scales: {
+                    // SE REMUEVEN LAS LÍNEAS DE LA GRILLA ATRÁS DE LAS BARRAS
+                    x: { grid: { display: false } },
+                    y: { grid: { display: false }, beginAtZero: true, ticks: { stepSize: 1 } }
+                },
+                // CAPTURAR CLIC EN LAS BARRAS
+                onClick: (e, activeElements) => {
+                    if (activeElements.length > 0) {
+                        const index = activeElements[0].index;
+                        const labelClikeada = chartBarrasInstance.data.labels[index];
+                        filtrarTablaPor('Sentimiento', labelClikeada);
+                    }
+                }
             }
         });
 
-        // 4. RENDERIZAR GRÁFICO DE DONA (Proporción de Impactos)
+        // CONFIGURACIÓN GRÁFICO DE DONA
         const ctxDona = document.getElementById('chartDona').getContext('2d');
-        if (chartDonaInstance) chartDonaInstance.destroy();
         chartDonaInstance = new Chart(ctxDona, {
             type: 'doughnut',
             data: {
@@ -239,9 +267,81 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } } },
+                // CAPTURAR CLIC EN LA DONA
+                onClick: (e, activeElements) => {
+                    if (activeElements.length > 0) {
+                        const index = activeElements[0].index;
+                        const labelClikeada = chartDonaInstance.data.labels[index];
+                        filtrarTablaPor('Inpacto', labelClikeada);
+                    }
+                }
             }
         });
+    }
+
+    // FUNCIÓN PARA RENDERIZAR FILAS EN LA TABLA
+    function renderizarTabla(noticiasFiltradas) {
+        const cuerpoTabla = document.getElementById('tabla-noticias-body');
+        cuerpoTabla.innerHTML = '';
+
+        if (noticiasFiltradas.length === 0) {
+            cuerpoTabla.innerHTML = `<tr><td colspan="4" class="text-center text-muted py-4">No hay noticias para este criterio.</td></tr>`;
+            return;
+        }
+
+        noticiasFiltradas.forEach(noticia => {
+            const fila = document.createElement('tr');
+            
+            let borderColor = 'border-left: 5px solid #6c757d;';
+            if (noticia.Inpacto === 'Alto' || noticia.Inpacto === 'High') borderColor = 'border-left: 5px solid #dc3545;';
+            else if (noticia.Inpacto === 'Medio' || noticia.Inpacto === 'Medium') borderColor = 'border-left: 5px solid #ffc107;';
+            else if (noticia.Inpacto === 'Bajo' || noticia.Inpacto === 'Low') borderColor = 'border-left: 5px solid #198754;';
+
+            let badgeClass = 'badge-neutral';
+            if (noticia.Sentimiento === 'Positivo') badgeClass = 'badge-positivo';
+            if (noticia.Sentimiento === 'Negativo') badgeClass = 'badge-negativo';
+
+            fila.innerHTML = `
+                <td style="${borderColor} padding-left: 12px; font-weight: 500;">${noticia.Titular_Noticia}</td>
+                <td><span class="${badgeClass}">${noticia.Sentimiento}</span></td>
+                <td><span class="fw-bold text-dark">${noticia.Inpacto}</span></td>
+                <td class="text-muted small">${noticia.Entidad || 'General / Mercados'}</td>
+            `;
+            cuerpoTabla.appendChild(fila);
+        });
+    }
+
+    // LÓGICA DE FILTRADO DINÁMICO CRUZADO
+    function filtrarTablaPor(columna, valor) {
+        filtroActivo.columna = columna;
+        filtroActivo.valor = valor;
+
+        // Filtrar array completo
+        const filtradas = todasLasNoticias.filter(n => {
+            // Maneja casos híbridos de idioma si hiciera falta
+            if (columna === 'Inpacto' && valor === 'Alto') return n.Inpacto === 'Alto' || n.Inpacto === 'High';
+            if (columna === 'Inpacto' && valor === 'Medio') return n.Inpacto === 'Medio' || n.Inpacto === 'Medium';
+            if (columna === 'Inpacto' && valor === 'Bajo') return n.Inpacto === 'Bajo' || n.Inpacto === 'Low';
+            return n[columna] === valor;
+        });
+
+        // Mostrar cartel indicador de filtro
+        const banner = document.getElementById('filterIndicator');
+        const bannerText = document.getElementById('filterText');
+        bannerText.innerHTML = `📍 Filtro activo: <strong>${columna}</strong> igual a <strong>"${valor}"</strong> (${filtradas.length} resultados)`;
+        banner.style.display = 'flex';
+
+        // Renderizar solo ese fragmento
+        renderizarTabla(filtradas);
+    }
+
+    // QUITAR FILTROS
+    function limpiarFiltros() {
+        filtroActivo.columna = null;
+        filtroActivo.valor = null;
+        document.getElementById('filterIndicator').style.display = 'none';
+        renderizarTabla(todasLasNoticias);
     }
 </script>
 
