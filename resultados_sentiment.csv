@@ -1,8 +1,8 @@
-"ID","Banco","Titular_Noticia","Fecha","Impacto_Riesgo","Titular_Noticia_SplitResultList","Titular_Noticia_SplitResultList_replaced","body_peticion","Status","Content type","body","respuesta_ia","respuesta_ia_Arr[0]","respuesta_ia_Arr[1]"
-1,"Galicia","Banco Galicia concreta la compra de la operacion local del HSBC en Argentina","2024-04-09","Alta exposicion / Crecimiento","compra","Positivo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Banco Galicia concreta la compra de la operacion local del HSBC en Argentina""}]}",200,"application/json","{
-  ""id"" : ""gen-1782491997-MZdO365VxrGJlw6ptnwQ"",
+"Banco","Titular_Noticia","Fecha","body_peticion","Status","Content type","body","respuesta_ia","Sentimiento","Inpacto","Entidad"
+"Global","What You Need To Know Ahead of CSX Corporation's Earnings Release","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: What You Need To Know Ahead of CSX Corporation's Earnings Release""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427823-bkHvzLkqxqr9H28s9ueu"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782491997,
+  ""created"" : 1783427823,
   ""model"" : ""deepseek/deepseek-chat-v3"",
   ""provider"" : ""StreamLake"",
   ""system_fingerprint"" : null,
@@ -14,16 +14,16 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Positivo | Banco Galicia fortalece su posición en el mercado argentino con la adquisición de HSBC."",
+      ""content"" : ""```json\n{\n  \""sentimiento\"": \""Neutral\"",\n  \""impacto\"": \""Medio\"",\n  \""entidad\"": \""CSX Corporation\""\n}\n```"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 143,
-    ""completion_tokens"" : 26,
-    ""total_tokens"" : 169,
-    ""cost"" : 0.0000494312,
+    ""prompt_tokens"" : 202,
+    ""completion_tokens"" : 35,
+    ""total_tokens"" : 237,
+    ""cost"" : 0.0000684439,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -32,9 +32,9 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.0000494312,
-      ""upstream_inference_prompt_cost"" : 0.0000286286,
-      ""upstream_inference_completions_cost"" : 0.0000208026
+      ""upstream_inference_cost"" : 0.0000684439,
+      ""upstream_inference_prompt_cost"" : 0.0000404404,
+      ""upstream_inference_completions_cost"" : 0.0000280035
     },
     ""completion_tokens_details"" : {
       ""reasoning_tokens"" : 0,
@@ -42,11 +42,15 @@
       ""audio_tokens"" : 0
     }
   }
-}","Positivo | Banco Galicia fortalece su posición en el mercado argentino con la adquisición de HSBC.","Positivo","Banco Galicia fortalece su posición en el mercado argentino con la adquisición de HSBC."
-2,"Santander","Santander sufre un hackeo global que expone datos de millones de clientes y empleados","2024-05-14","Alto Riesgo Ciberseguridad","hackeo","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Santander sufre un hackeo global que expone datos de millones de clientes y empleados""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492000-Xegx9BLEGtz1efYp7DSv"",
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""CSX Corporation""
+}","Neutral","Medio","CSX Corporation"
+"Global","2 Covered Call Ideas on KO Stock","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: 2 Covered Call Ideas on KO Stock""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427825-ajUb5tP5f8gbTPVVliH8"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782492000,
+  ""created"" : 1783427825,
   ""model"" : ""deepseek/deepseek-chat-v3"",
   ""provider"" : ""StreamLake"",
   ""system_fingerprint"" : null,
@@ -58,16 +62,16 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Negativo | Santander enfrenta una grave vulnerabilidad de seguridad que compromete información sensible de millones de personas."",
+      ""content"" : ""```json\n{\n  \""sentimiento\"": \""Neutral\"",\n  \""impacto\"": \""Medio\"",\n  \""entidad\"": \""KO\""\n}\n```"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 144,
-    ""completion_tokens"" : 23,
-    ""total_tokens"" : 167,
-    ""cost"" : 0.0000472311,
+    ""prompt_tokens"" : 197,
+    ""completion_tokens"" : 33,
+    ""total_tokens"" : 230,
+    ""cost"" : 0.0000658427,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -76,9 +80,9 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.0000472311,
-      ""upstream_inference_prompt_cost"" : 0.0000288288,
-      ""upstream_inference_completions_cost"" : 0.0000184023
+      ""upstream_inference_cost"" : 0.0000658427,
+      ""upstream_inference_prompt_cost"" : 0.0000394394,
+      ""upstream_inference_completions_cost"" : 0.0000264033
     },
     ""completion_tokens_details"" : {
       ""reasoning_tokens"" : 0,
@@ -86,13 +90,17 @@
       ""audio_tokens"" : 0
     }
   }
-}","Negativo | Santander enfrenta una grave vulnerabilidad de seguridad que compromete información sensible de millones de personas.","Negativo","Santander enfrenta una grave vulnerabilidad de seguridad que compromete información sensible de millones de personas."
-2,"Santander","Santander sufre un hackeo global que expone datos de millones de clientes y empleados","2024-05-14","Alto Riesgo Ciberseguridad","expone","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Santander sufre un hackeo global que expone datos de millones de clientes y empleados""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492001-ZC8VRvyupm9aHy8iga9H"",
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""KO""
+}","Neutral","Medio","KO"
+"Global","Stocks Set to Open Higher as Tech Bounces, U.S. Jobs Data and Warsh’s Remarks Awaited","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Stocks Set to Open Higher as Tech Bounces, U.S. Jobs Data and Warsh’s Remarks Awaited""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427828-hR9VASKLRvu8dTJCIKRy"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782492001,
+  ""created"" : 1783427828,
   ""model"" : ""deepseek/deepseek-chat-v3"",
-  ""provider"" : ""StreamLake"",
+  ""provider"" : ""DeepInfra"",
   ""system_fingerprint"" : null,
   ""service_tier"" : null,
   ""choices"" : [ {
@@ -102,16 +110,16 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Negativo | Santander enfrenta una grave violación de seguridad que compromete información sensible de millones de personas."",
+      ""content"" : ""{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Mercados\"" }"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 144,
-    ""completion_tokens"" : 23,
-    ""total_tokens"" : 167,
-    ""cost"" : 0.0000472311,
+    ""prompt_tokens"" : 213,
+    ""completion_tokens"" : 29,
+    ""total_tokens"" : 242,
+    ""cost"" : 0.00009397,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -120,9 +128,9 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.0000472311,
-      ""upstream_inference_prompt_cost"" : 0.0000288288,
-      ""upstream_inference_completions_cost"" : 0.0000184023
+      ""upstream_inference_cost"" : 0.00009397,
+      ""upstream_inference_prompt_cost"" : 0.00006816,
+      ""upstream_inference_completions_cost"" : 0.00002581
     },
     ""completion_tokens_details"" : {
       ""reasoning_tokens"" : 0,
@@ -130,11 +138,15 @@
       ""audio_tokens"" : 0
     }
   }
-}","Negativo | Santander enfrenta una grave violación de seguridad que compromete información sensible de millones de personas.","Negativo","Santander enfrenta una grave violación de seguridad que compromete información sensible de millones de personas."
-3,"BBVA","BBVA gana un 38% mas en el primer trimestre impulsado por sus filiales de Mexico y España","2024-04-30","Bajo Riesgo Financiero","gana","Positivo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: BBVA gana un 38% mas en el primer trimestre impulsado por sus filiales de Mexico y España""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492003-KTRYpaq4PgaGwIaAIXoL"",
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Mercados""
+}","Positivo","Medio","Mercados"
+"Global","William Blair Maintains Outperform Rating on Medline (MDLN) After Warehouse Fire","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: William Blair Maintains Outperform Rating on Medline (MDLN) After Warehouse Fire""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427831-QdmKTdR8aNJy7A9Mj7Ga"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782492003,
+  ""created"" : 1783427831,
   ""model"" : ""deepseek/deepseek-chat-v3"",
   ""provider"" : ""StreamLake"",
   ""system_fingerprint"" : null,
@@ -146,16 +158,208 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Positivo | BBVA registra un crecimiento significativo en sus ganancias gracias al desempeño de sus filiales en México y España."",
+      ""content"" : ""```json\n{\n  \""sentimiento\"": \""Neutral\"",\n  \""impacto\"": \""Medio\"",\n  \""entidad\"": \""Medline\""\n}\n```"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 148,
+    ""prompt_tokens"" : 206,
+    ""completion_tokens"" : 35,
+    ""total_tokens"" : 241,
+    ""cost"" : 0.0000692447,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000692447,
+      ""upstream_inference_prompt_cost"" : 0.0000412412,
+      ""upstream_inference_completions_cost"" : 0.0000280035
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Medline""
+}","Neutral","Medio","Medline"
+"Global","Analyst Report: McCormick & Co Inc/MD","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Analyst Report: McCormick & Co Inc/MD""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427833-t2YCLvvwQtrhj9akcgmK"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427833,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Neutral\"", \""impacto\"": \""Medio\"", \""entidad\"": \""McCormick & Co Inc\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 199,
+    ""completion_tokens"" : 35,
+    ""total_tokens"" : 234,
+    ""cost"" : 0.0000678433,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000678433,
+      ""upstream_inference_prompt_cost"" : 0.0000398398,
+      ""upstream_inference_completions_cost"" : 0.0000280035
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""McCormick & Co Inc""
+}","Neutral","Medio","McCormick & Co Inc"
+"Global","Ipsen to Buy Kartos Therapeutics for Up to $1.75 Billion","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Ipsen to Buy Kartos Therapeutics for Up to $1.75 Billion""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427836-KIxpLAhIwkGlk6sOBSOL"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427836,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{\n  \""sentimiento\"": \""Positivo\"",\n  \""impacto\"": \""Alto\"",\n  \""entidad\"": \""Ipsen\""\n}\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 204,
+    ""completion_tokens"" : 35,
+    ""total_tokens"" : 239,
+    ""cost"" : 0.0000688443,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000688443,
+      ""upstream_inference_prompt_cost"" : 0.0000408408,
+      ""upstream_inference_completions_cost"" : 0.0000280035
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Alto"",
+  ""entidad"" : ""Ipsen""
+}","Positivo","Alto","Ipsen"
+"Global","Is X-Energy (XE) the Best New Stock to Buy Other Than SpaceX?","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Is X-Energy (XE) the Best New Stock to Buy Other Than SpaceX?""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427838-NwoaUVKbxjMHlpSlPYfv"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427838,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{\n  \""sentimiento\"": \""Positivo\"",\n  \""impacto\"": \""Medio\"",\n  \""entidad\"": \""X-Energy (XE)\""\n}\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 206,
+    ""completion_tokens"" : 39,
+    ""total_tokens"" : 245,
+    ""cost"" : 0.0000724451,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000724451,
+      ""upstream_inference_prompt_cost"" : 0.0000412412,
+      ""upstream_inference_completions_cost"" : 0.0000312039
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""X-Energy (XE)""
+}","Positivo","Medio","X-Energy (XE)"
+"Global","Citi Maintains Buy Rating on Sunbelt Rentals (SUNB)","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Citi Maintains Buy Rating on Sunbelt Rentals (SUNB)""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427840-jlX7RceO4U4LzaUbWgy5"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427840,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Bajo\"", \""entidad\"": \""Sunbelt Rentals\"" }"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 205,
     ""completion_tokens"" : 30,
-    ""total_tokens"" : 178,
-    ""cost"" : 0.0000536326,
+    ""total_tokens"" : 235,
+    ""cost"" : 0.0000923,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -164,9 +368,9 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.0000536326,
-      ""upstream_inference_prompt_cost"" : 0.0000296296,
-      ""upstream_inference_completions_cost"" : 0.000024003
+      ""upstream_inference_cost"" : 0.0000923,
+      ""upstream_inference_prompt_cost"" : 0.0000656,
+      ""upstream_inference_completions_cost"" : 0.0000267
     },
     ""completion_tokens_details"" : {
       ""reasoning_tokens"" : 0,
@@ -174,11 +378,63 @@
       ""audio_tokens"" : 0
     }
   }
-}","Positivo | BBVA registra un crecimiento significativo en sus ganancias gracias al desempeño de sus filiales en México y España.","Positivo","BBVA registra un crecimiento significativo en sus ganancias gracias al desempeño de sus filiales en México y España."
-5,"BBVA","La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado","2025-06-18","Riesgo Regulatorio / Legal","investiga","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492005-x1JE90nwUQpzdWIpODET"",
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Bajo"",
+  ""entidad"" : ""Sunbelt Rentals""
+}","Positivo","Bajo","Sunbelt Rentals"
+"Global","Here’s Why Cerebras (CBRS) is Among the 10 Best New Stocks to Buy Other Than SpaceX","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Here’s Why Cerebras (CBRS) is Among the 10 Best New Stocks to Buy Other Than SpaceX""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427843-QqCzK1RYmoP6SHR7MRMk"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782492005,
+  ""created"" : 1783427843,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Cerebras\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 212,
+    ""completion_tokens"" : 33,
+    ""total_tokens"" : 245,
+    ""cost"" : 0.0000688457,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000688457,
+      ""upstream_inference_prompt_cost"" : 0.0000424424,
+      ""upstream_inference_completions_cost"" : 0.0000264033
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Cerebras""
+}","Positivo","Medio","Cerebras"
+"Global","Navan (NAVN) Selected by Cummins to Support Global Business Travel","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Navan (NAVN) Selected by Cummins to Support Global Business Travel""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427845-pOu8MsNwY6bgPj3091fs"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427845,
   ""model"" : ""deepseek/deepseek-chat-v3"",
   ""provider"" : ""Novita"",
   ""system_fingerprint"" : null,
@@ -190,16 +446,16 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Negativo | La CNMV investiga a BBVA por posibles irregularidades en contrataciones pasadas, lo que genera preocupación."",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Navan\"" }\n```"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 144,
-    ""completion_tokens"" : 27,
-    ""total_tokens"" : 171,
-    ""cost"" : 0.0000927,
+    ""prompt_tokens"" : 204,
+    ""completion_tokens"" : 32,
+    ""total_tokens"" : 236,
+    ""cost"" : 0.0001232,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -208,9 +464,9 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.0000927,
-      ""upstream_inference_prompt_cost"" : 0.0000576,
-      ""upstream_inference_completions_cost"" : 0.0000351
+      ""upstream_inference_cost"" : 0.0001232,
+      ""upstream_inference_prompt_cost"" : 0.0000816,
+      ""upstream_inference_completions_cost"" : 0.0000416
     },
     ""completion_tokens_details"" : {
       ""reasoning_tokens"" : 0,
@@ -218,11 +474,15 @@
       ""audio_tokens"" : 0
     }
   }
-}","Negativo | La CNMV investiga a BBVA por posibles irregularidades en contrataciones pasadas, lo que genera preocupación.","Negativo","La CNMV investiga a BBVA por posibles irregularidades en contrataciones pasadas, lo que genera preocupación."
-5,"BBVA","La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado","2025-06-18","Riesgo Regulatorio / Legal","irregularidades","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: La CNMV de España investiga a BBVA por supuestas irregularidades en contrataciones del pasado""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492007-5aZtT3iYVUsitrAcnsiu"",
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Navan""
+}","Positivo","Medio","Navan"
+"Global","Market Update: CRL, MKC","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Market Update: CRL, MKC""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427847-8aIdt1XfxwYoqWlzrIUj"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782492007,
+  ""created"" : 1783427847,
   ""model"" : ""deepseek/deepseek-chat-v3"",
   ""provider"" : ""DeepInfra"",
   ""system_fingerprint"" : null,
@@ -234,16 +494,16 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Negativo | BBVA enfrenta una investigación por posibles irregularidades en contrataciones anteriores."",
+      ""content"" : ""{ \""sentimiento\"": \""Neutral\"", \""impacto\"": \""Bajo\"", \""entidad\"": \""Mercados\"" }"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 144,
-    ""completion_tokens"" : 19,
-    ""total_tokens"" : 163,
-    ""cost"" : 0.00006299,
+    ""prompt_tokens"" : 197,
+    ""completion_tokens"" : 28,
+    ""total_tokens"" : 225,
+    ""cost"" : 0.00008796,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -252,9 +512,9 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.00006299,
-      ""upstream_inference_prompt_cost"" : 0.00004608,
-      ""upstream_inference_completions_cost"" : 0.00001691
+      ""upstream_inference_cost"" : 0.00008796,
+      ""upstream_inference_prompt_cost"" : 0.00006304,
+      ""upstream_inference_completions_cost"" : 0.00002492
     },
     ""completion_tokens_details"" : {
       ""reasoning_tokens"" : 0,
@@ -262,55 +522,15 @@
       ""audio_tokens"" : 0
     }
   }
-}","Negativo | BBVA enfrenta una investigación por posibles irregularidades en contrataciones anteriores.","Negativo","BBVA enfrenta una investigación por posibles irregularidades en contrataciones anteriores."
-8,"Macro","Banco Macro reporta un incremento en el ratio de morosidad de su cartera de consumo minorista","2024-08-14","Alto Riesgo Crediticio","morosidad","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Banco Macro reporta un incremento en el ratio de morosidad de su cartera de consumo minorista""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492009-bfOqnYlLHDp2hErjUcXy"",
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Bajo"",
+  ""entidad"" : ""Mercados""
+}","Neutral","Bajo","Mercados"
+"Global","Jensen Huang’s Net Worth Under Pressure As Nvidia Stock Nears Bear Market","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Jensen Huang’s Net Worth Under Pressure As Nvidia Stock Nears Bear Market""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427850-Z1bu8TpMIAODP0y5pXpF"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782492009,
-  ""model"" : ""deepseek/deepseek-chat-v3"",
-  ""provider"" : ""DeepInfra"",
-  ""system_fingerprint"" : null,
-  ""service_tier"" : null,
-  ""choices"" : [ {
-    ""index"" : 0,
-    ""logprobs"" : null,
-    ""finish_reason"" : ""stop"",
-    ""native_finish_reason"" : ""stop"",
-    ""message"" : {
-      ""role"" : ""assistant"",
-      ""content"" : ""Negativo | Banco Macro enfrenta un aumento en la morosidad de su cartera de consumo minorista."",
-      ""refusal"" : null,
-      ""reasoning"" : null
-    }
-  } ],
-  ""usage"" : {
-    ""prompt_tokens"" : 146,
-    ""completion_tokens"" : 24,
-    ""total_tokens"" : 170,
-    ""cost"" : 0.00006808,
-    ""is_byok"" : false,
-    ""prompt_tokens_details"" : {
-      ""cached_tokens"" : 0,
-      ""cache_write_tokens"" : 0,
-      ""audio_tokens"" : 0,
-      ""video_tokens"" : 0
-    },
-    ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.00006808,
-      ""upstream_inference_prompt_cost"" : 0.00004672,
-      ""upstream_inference_completions_cost"" : 0.00002136
-    },
-    ""completion_tokens_details"" : {
-      ""reasoning_tokens"" : 0,
-      ""image_tokens"" : 0,
-      ""audio_tokens"" : 0
-    }
-  }
-}","Negativo | Banco Macro enfrenta un aumento en la morosidad de su cartera de consumo minorista.","Negativo","Banco Macro enfrenta un aumento en la morosidad de su cartera de consumo minorista."
-9,"Santander","Standard & Poor's eleva la calificacion crediticia de Banco Santander a perspectiva estable","2025-03-11","Reduccion de Riesgo","eleva","Positivo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Standard & Poor's eleva la calificacion crediticia de Banco Santander a perspectiva estable""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492010-M1L4c3y4Ud0yrKGCYwlY"",
-  ""object"" : ""chat.completion"",
-  ""created"" : 1782492010,
+  ""created"" : 1783427850,
   ""model"" : ""deepseek/deepseek-chat-v3"",
   ""provider"" : ""StreamLake"",
   ""system_fingerprint"" : null,
@@ -322,16 +542,16 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Positivo | Standard & Poor's mejora la perspectiva crediticia de Banco Santander, indicando mayor confianza en su solidez financiera."",
+      ""content"" : ""```json\n{\n  \""sentimiento\"": \""Negativo\"",\n  \""impacto\"": \""Medio\"",\n  \""entidad\"": \""Nvidia\""\n}\n```"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 143,
-    ""completion_tokens"" : 31,
-    ""total_tokens"" : 174,
-    ""cost"" : 0.0000534317,
+    ""prompt_tokens"" : 205,
+    ""completion_tokens"" : 35,
+    ""total_tokens"" : 240,
+    ""cost"" : 0.0000690445,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -340,8 +560,200 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.0000534317,
-      ""upstream_inference_prompt_cost"" : 0.0000286286,
+      ""upstream_inference_cost"" : 0.0000690445,
+      ""upstream_inference_prompt_cost"" : 0.000041041,
+      ""upstream_inference_completions_cost"" : 0.0000280035
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Negativo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Nvidia""
+}","Negativo","Medio","Nvidia"
+"Global","Qnity Electronics (Q) Launches Optivision Max CMP Polishing Pads","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Qnity Electronics (Q) Launches Optivision Max CMP Polishing Pads""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427852-YPTYqYwldQtz0LLZdBb1"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427852,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Qnity Electronics\"" }"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 208,
+    ""completion_tokens"" : 30,
+    ""total_tokens"" : 238,
+    ""cost"" : 0.00009326,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00009326,
+      ""upstream_inference_prompt_cost"" : 0.00006656,
+      ""upstream_inference_completions_cost"" : 0.0000267
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Qnity Electronics""
+}","Positivo","Medio","Qnity Electronics"
+"Global","Stifel Maintains Buy Rating on Fermi (FRMI)","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Stifel Maintains Buy Rating on Fermi (FRMI)""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427854-9AR4j9qcRIr4zZ79r9dn"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427854,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""Novita"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Fermi (FRMI)\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 202,
+    ""completion_tokens"" : 36,
+    ""total_tokens"" : 238,
+    ""cost"" : 0.0001276,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0001276,
+      ""upstream_inference_prompt_cost"" : 0.0000808,
+      ""upstream_inference_completions_cost"" : 0.0000468
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Fermi (FRMI)""
+}","Positivo","Medio","Fermi (FRMI)"
+"Global","JPMorgan Maintains Overweight Rating on Aura Minerals (AUGO)","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: JPMorgan Maintains Overweight Rating on Aura Minerals (AUGO)""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427856-L5imVRr6MRZQvNKyxNNd"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427856,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Aura Minerals\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 205,
+    ""completion_tokens"" : 33,
+    ""total_tokens"" : 238,
+    ""cost"" : 0.0000674443,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000674443,
+      ""upstream_inference_prompt_cost"" : 0.000041041,
+      ""upstream_inference_completions_cost"" : 0.0000264033
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Aura Minerals""
+}","Positivo","Medio","Aura Minerals"
+"Global","Figma (FIG): The Best New Stock to Buy Other Than SpaceX","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Figma (FIG): The Best New Stock to Buy Other Than SpaceX""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427859-bk2KVINfSeyHyhb9dGaO"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427859,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Figma\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 203,
+    ""completion_tokens"" : 31,
+    ""total_tokens"" : 234,
+    ""cost"" : 0.0000654437,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000654437,
+      ""upstream_inference_prompt_cost"" : 0.0000406406,
       ""upstream_inference_completions_cost"" : 0.0000248031
     },
     ""completion_tokens_details"" : {
@@ -350,11 +762,15 @@
       ""audio_tokens"" : 0
     }
   }
-}","Positivo | Standard & Poor's mejora la perspectiva crediticia de Banco Santander, indicando mayor confianza en su solidez financiera.","Positivo","Standard & Poor's mejora la perspectiva crediticia de Banco Santander, indicando mayor confianza en su solidez financiera."
-12,"Galicia","Usuarios reportan fallas masivas en la app de Galicia y home banking durante el dia de cobro","2025-05-02","Riesgo Operativo / Reputacional","fallas","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: Usuarios reportan fallas masivas en la app de Galicia y home banking durante el dia de cobro""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492012-53DGIWNHvyFA3GjUgzvl"",
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Figma""
+}","Positivo","Medio","Figma"
+"Global","Analyst Report: MDU Resources Group Inc","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Analyst Report: MDU Resources Group Inc""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427861-IrdLPcFb0uMLb0648SqV"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782492012,
+  ""created"" : 1783427861,
   ""model"" : ""deepseek/deepseek-chat-v3"",
   ""provider"" : ""DeepInfra"",
   ""system_fingerprint"" : null,
@@ -366,16 +782,304 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Negativo | La app y home banking del Galicia tuvieron fallas masivas durante el día de cobro, afectando a los usuarios."",
+      ""content"" : ""{ \""sentimiento\"": \""Neutral\"", \""impacto\"": \""Bajo\"", \""entidad\"": \""MDU Resources Group Inc\"" }"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 148,
+    ""prompt_tokens"" : 197,
+    ""completion_tokens"" : 30,
+    ""total_tokens"" : 227,
+    ""cost"" : 0.00008974,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00008974,
+      ""upstream_inference_prompt_cost"" : 0.00006304,
+      ""upstream_inference_completions_cost"" : 0.0000267
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Bajo"",
+  ""entidad"" : ""MDU Resources Group Inc""
+}","Neutral","Bajo","MDU Resources Group Inc"
+"Global","Stocks Have Risen So Far This Year. Here's What Experts Say the Second Half of 2026 Could Bring","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Stocks Have Risen So Far This Year. Here's What Experts Say the Second Half of 2026 Could Bring""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427864-aYVYQz7hBsu61OvJQehS"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427864,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""Novita"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Mercados\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 212,
+    ""completion_tokens"" : 33,
+    ""total_tokens"" : 245,
+    ""cost"" : 0.0001277,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0001277,
+      ""upstream_inference_prompt_cost"" : 0.0000848,
+      ""upstream_inference_completions_cost"" : 0.0000429
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Mercados""
+}","Positivo","Medio","Mercados"
+"Global","Firefly Aerospace (FLY) to Acquire Space-ng for Autonomous Navigation Capabilities","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Firefly Aerospace (FLY) to Acquire Space-ng for Autonomous Navigation Capabilities""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427867-AnaqgU2oA4SAtdEXrV3F"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427867,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""Novita"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Firefly Aerospace\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 207,
+    ""completion_tokens"" : 33,
+    ""total_tokens"" : 240,
+    ""cost"" : 0.0001257,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0001257,
+      ""upstream_inference_prompt_cost"" : 0.0000828,
+      ""upstream_inference_completions_cost"" : 0.0000429
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Firefly Aerospace""
+}","Positivo","Medio","Firefly Aerospace"
+"Global","The driver who hit me has the same insurer as me. Now I see the same guy is representing both of us — how is this fair?","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: The driver who hit me has the same insurer as me. Now I see the same guy is representing both of us — how is this fair?""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427869-WMVwce07bPeIkmsqMiLu"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427869,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Negativo\"", \""impacto\"": \""Bajo\"", \""entidad\"": \""Mercados\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 218,
+    ""completion_tokens"" : 31,
+    ""total_tokens"" : 249,
+    ""cost"" : 0.0000684467,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 128,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000684467,
+      ""upstream_inference_prompt_cost"" : 0.0000436436,
+      ""upstream_inference_completions_cost"" : 0.0000248031
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Negativo"",
+  ""impacto"" : ""Bajo"",
+  ""entidad"" : ""Mercados""
+}","Negativo","Bajo","Mercados"
+"Global","Rocket Lab buys Iridium in $8 billion deal to take on SpaceX","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Rocket Lab buys Iridium in $8 billion deal to take on SpaceX""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427871-1VhP1rMiL3TrGl7acYEd"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427871,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Alto\"", \""entidad\"": \""Rocket Lab\"" }"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 203,
+    ""completion_tokens"" : 29,
+    ""total_tokens"" : 232,
+    ""cost"" : 0.00009077,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00009077,
+      ""upstream_inference_prompt_cost"" : 0.00006496,
+      ""upstream_inference_completions_cost"" : 0.00002581
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Alto"",
+  ""entidad"" : ""Rocket Lab""
+}","Positivo","Alto","Rocket Lab"
+"Global","Morning Bid: Weekend wars","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Morning Bid: Weekend wars""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427874-9gUcG2HiTEF8bpFQeZWJ"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427874,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""StreamLake"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Neutral\"", \""impacto\"": \""Bajo\"", \""entidad\"": \""Mercados\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 194,
+    ""completion_tokens"" : 31,
+    ""total_tokens"" : 225,
+    ""cost"" : 0.0000636419,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 128,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0000636419,
+      ""upstream_inference_prompt_cost"" : 0.0000388388,
+      ""upstream_inference_completions_cost"" : 0.0000248031
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Bajo"",
+  ""entidad"" : ""Mercados""
+}","Neutral","Bajo","Mercados"
+"Global","Daily Spotlight: Bond Spreads Narrow","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Daily Spotlight: Bond Spreads Narrow""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427876-oHbjtQQScnrDT3VROp4C"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427876,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""Novita"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Neutral\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Mercados\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 196,
     ""completion_tokens"" : 32,
-    ""total_tokens"" : 180,
-    ""cost"" : 0.00007584,
+    ""total_tokens"" : 228,
+    ""cost"" : 0.00012,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -384,9 +1088,9 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.00007584,
-      ""upstream_inference_prompt_cost"" : 0.00004736,
-      ""upstream_inference_completions_cost"" : 0.00002848
+      ""upstream_inference_cost"" : 0.00012,
+      ""upstream_inference_prompt_cost"" : 0.0000784,
+      ""upstream_inference_completions_cost"" : 0.0000416
     },
     ""completion_tokens_details"" : {
       ""reasoning_tokens"" : 0,
@@ -394,11 +1098,15 @@
       ""audio_tokens"" : 0
     }
   }
-}","Negativo | La app y home banking del Galicia tuvieron fallas masivas durante el día de cobro, afectando a los usuarios.","Negativo","La app y home banking del Galicia tuvieron fallas masivas durante el día de cobro, afectando a los usuarios."
-14,"BBVA","BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero","2024-11-19","Alto Riesgo de Cumplimiento","multa","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492014-wWmJLvFtO0ksy4Etf9gY"",
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Mercados""
+}","Neutral","Medio","Mercados"
+"Global","Robinhood Shares Gain as June Trading Activity Reaches New Highs (HOOD)","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Robinhood Shares Gain as June Trading Activity Reaches New Highs (HOOD)""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427878-J50KzMlQe0JQu9XfW7UF"",
   ""object"" : ""chat.completion"",
-  ""created"" : 1782492014,
+  ""created"" : 1783427878,
   ""model"" : ""deepseek/deepseek-chat-v3"",
   ""provider"" : ""DeepInfra"",
   ""system_fingerprint"" : null,
@@ -410,60 +1118,16 @@
     ""native_finish_reason"" : ""stop"",
     ""message"" : {
       ""role"" : ""assistant"",
-      ""content"" : ""Negativo | BBVA fue sancionado económicamente por incumplir normas contra el lavado de dinero."",
+      ""content"" : ""{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Robinhood\"" }"",
       ""refusal"" : null,
       ""reasoning"" : null
     }
   } ],
   ""usage"" : {
-    ""prompt_tokens"" : 149,
-    ""completion_tokens"" : 27,
-    ""total_tokens"" : 176,
-    ""cost"" : 0.00007171,
-    ""is_byok"" : false,
-    ""prompt_tokens_details"" : {
-      ""cached_tokens"" : 0,
-      ""cache_write_tokens"" : 0,
-      ""audio_tokens"" : 0,
-      ""video_tokens"" : 0
-    },
-    ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.00007171,
-      ""upstream_inference_prompt_cost"" : 0.00004768,
-      ""upstream_inference_completions_cost"" : 0.00002403
-    },
-    ""completion_tokens_details"" : {
-      ""reasoning_tokens"" : 0,
-      ""image_tokens"" : 0,
-      ""audio_tokens"" : 0
-    }
-  }
-}","Negativo | BBVA fue sancionado económicamente por incumplir normas contra el lavado de dinero.","Negativo","BBVA fue sancionado económicamente por incumplir normas contra el lavado de dinero."
-14,"BBVA","BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero","2024-11-19","Alto Riesgo de Cumplimiento","fallas","Negativo","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Analizá la siguiente noticia. Respondé en formato de texto plano siguiendo estrictamente esta estructura, separada por una barra vertical: SENTIMIENTO | COMENTARIO. En SENTIMIENTO debés usar únicamente una de estas tres palabras: 'Positivo', 'Neutral' o 'Negativo'. En COMENTARIO escribí un resumen ultra corto de una sola oración sobre el porqué. Ejemplo: Positivo | El banco concretó una compra estratégica muy favorable. Noticia: BBVA recibe una multa millonaria del Banco Central por fallas en los controles de lavado de dinero""}]}",200,"application/json","{
-  ""id"" : ""gen-1782492015-UYVDgoPA2096KNVFS4o5"",
-  ""object"" : ""chat.completion"",
-  ""created"" : 1782492015,
-  ""model"" : ""deepseek/deepseek-chat-v3"",
-  ""provider"" : ""DeepInfra"",
-  ""system_fingerprint"" : null,
-  ""service_tier"" : null,
-  ""choices"" : [ {
-    ""index"" : 0,
-    ""logprobs"" : null,
-    ""finish_reason"" : ""stop"",
-    ""native_finish_reason"" : ""stop"",
-    ""message"" : {
-      ""role"" : ""assistant"",
-      ""content"" : ""Negativo | BBVA fue penalizado con una multa considerable debido a deficiencias en sus sistemas contra el lavado de dinero."",
-      ""refusal"" : null,
-      ""reasoning"" : null
-    }
-  } ],
-  ""usage"" : {
-    ""prompt_tokens"" : 149,
+    ""prompt_tokens"" : 206,
     ""completion_tokens"" : 28,
-    ""total_tokens"" : 177,
-    ""cost"" : 0.0000726,
+    ""total_tokens"" : 234,
+    ""cost"" : 0.00009084,
     ""is_byok"" : false,
     ""prompt_tokens_details"" : {
       ""cached_tokens"" : 0,
@@ -472,8 +1136,8 @@
       ""video_tokens"" : 0
     },
     ""cost_details"" : {
-      ""upstream_inference_cost"" : 0.0000726,
-      ""upstream_inference_prompt_cost"" : 0.00004768,
+      ""upstream_inference_cost"" : 0.00009084,
+      ""upstream_inference_prompt_cost"" : 0.00006592,
       ""upstream_inference_completions_cost"" : 0.00002492
     },
     ""completion_tokens_details"" : {
@@ -482,4 +1146,248 @@
       ""audio_tokens"" : 0
     }
   }
-}","Negativo | BBVA fue penalizado con una multa considerable debido a deficiencias en sus sistemas contra el lavado de dinero.","Negativo","BBVA fue penalizado con una multa considerable debido a deficiencias en sus sistemas contra el lavado de dinero."
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Robinhood""
+}","Positivo","Medio","Robinhood"
+"Global","What You Need To Know Ahead of D.R. Horton’s Earnings Release","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: What You Need To Know Ahead of D.R. Horton’s Earnings Release""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427881-IdumfVb551mnRVIDfRD4"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427881,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""Novita"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Neutral\"", \""impacto\"": \""Medio\"", \""entidad\"": \""D.R. Horton\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 204,
+    ""completion_tokens"" : 33,
+    ""total_tokens"" : 237,
+    ""cost"" : 0.0001245,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0001245,
+      ""upstream_inference_prompt_cost"" : 0.0000816,
+      ""upstream_inference_completions_cost"" : 0.0000429
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""D.R. Horton""
+}","Neutral","Medio","D.R. Horton"
+"Global","Is NVIDIA (NVDA) the Best Fast Growth Stock to Buy as It Targets Fully Autonomous AI for Telecom Networks?","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Is NVIDIA (NVDA) the Best Fast Growth Stock to Buy as It Targets Fully Autonomous AI for Telecom Networks?""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427883-CTyf8LZp5ujwPq79nhxr"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427883,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""NVIDIA\"" }"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 212,
+    ""completion_tokens"" : 28,
+    ""total_tokens"" : 240,
+    ""cost"" : 0.00009276,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00009276,
+      ""upstream_inference_prompt_cost"" : 0.00006784,
+      ""upstream_inference_completions_cost"" : 0.00002492
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""NVIDIA""
+}","Positivo","Medio","NVIDIA"
+"Global","Broadcom (AVGO) Raises Tender-Offer Cap to $3 Billion, Accepts $2.9 Billion in Notes","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Broadcom (AVGO) Raises Tender-Offer Cap to $3 Billion, Accepts $2.9 Billion in Notes""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427885-G2TaTT9ji56K8IJze5CT"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427885,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""{ \""sentimiento\"": \""Neutral\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Broadcom\"" }"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 216,
+    ""completion_tokens"" : 27,
+    ""total_tokens"" : 243,
+    ""cost"" : 0.00009315,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00009315,
+      ""upstream_inference_prompt_cost"" : 0.00006912,
+      ""upstream_inference_completions_cost"" : 0.00002403
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Neutral"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Broadcom""
+}","Neutral","Medio","Broadcom"
+"Global","SpaceX Stock Will Join The Nasdaq-100 Index On July 7","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: SpaceX Stock Will Join The Nasdaq-100 Index On July 7""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427887-1nxRQ7eXXDz8ufc7ei4F"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427887,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""DeepInfra"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""SpaceX\"" }"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 202,
+    ""completion_tokens"" : 28,
+    ""total_tokens"" : 230,
+    ""cost"" : 0.00008956,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.00008956,
+      ""upstream_inference_prompt_cost"" : 0.00006464,
+      ""upstream_inference_completions_cost"" : 0.00002492
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""SpaceX""
+}","Positivo","Medio","SpaceX"
+"Global","Technical Assessment: Bullish in the Intermediate-Term","7/7/2026","{""model"": ""deepseek/deepseek-chat-v3"", ""messages"": [{""role"": ""user"", ""content"": ""Actúa como un analista financiero experto. Analiza el siguiente titular de noticia en inglés y determina: 1. El sentimiento (Positivo, Negativo o Neutral). 2. El impacto/riesgo potencial (Alto, Medio o Bajo). 3. La entidad, empresa o tema principal de la noticia (ej. Tesla, Nvidia, SpaceX, CSX Corporation, Federal Reserve). Si no se menciona ninguna empresa o entidad clara, clasifícala como Mercados. Debes responder ÚNICAMENTE con un objeto JSON válido, sin textos introductorios ni bloques de código. El formato exacto debe ser: { 'sentimiento': 'VALOR', 'impacto': 'VALOR', 'entidad': 'NOMBRE_DE_LA_EMPRESA' } Titular a analizar: Technical Assessment: Bullish in the Intermediate-Term""}]}",200,"application/json","{
+  ""id"" : ""gen-1783427889-BtU2nAylSwdGiwSMOEpN"",
+  ""object"" : ""chat.completion"",
+  ""created"" : 1783427889,
+  ""model"" : ""deepseek/deepseek-chat-v3"",
+  ""provider"" : ""Novita"",
+  ""system_fingerprint"" : null,
+  ""service_tier"" : null,
+  ""choices"" : [ {
+    ""index"" : 0,
+    ""logprobs"" : null,
+    ""finish_reason"" : ""stop"",
+    ""native_finish_reason"" : ""stop"",
+    ""message"" : {
+      ""role"" : ""assistant"",
+      ""content"" : ""```json\n{ \""sentimiento\"": \""Positivo\"", \""impacto\"": \""Medio\"", \""entidad\"": \""Mercados\"" }\n```"",
+      ""refusal"" : null,
+      ""reasoning"" : null
+    }
+  } ],
+  ""usage"" : {
+    ""prompt_tokens"" : 198,
+    ""completion_tokens"" : 33,
+    ""total_tokens"" : 231,
+    ""cost"" : 0.0001221,
+    ""is_byok"" : false,
+    ""prompt_tokens_details"" : {
+      ""cached_tokens"" : 0,
+      ""cache_write_tokens"" : 0,
+      ""audio_tokens"" : 0,
+      ""video_tokens"" : 0
+    },
+    ""cost_details"" : {
+      ""upstream_inference_cost"" : 0.0001221,
+      ""upstream_inference_prompt_cost"" : 0.0000792,
+      ""upstream_inference_completions_cost"" : 0.0000429
+    },
+    ""completion_tokens_details"" : {
+      ""reasoning_tokens"" : 0,
+      ""image_tokens"" : 0,
+      ""audio_tokens"" : 0
+    }
+  }
+}","{
+  ""sentimiento"" : ""Positivo"",
+  ""impacto"" : ""Medio"",
+  ""entidad"" : ""Mercados""
+}","Positivo","Medio","Mercados"
