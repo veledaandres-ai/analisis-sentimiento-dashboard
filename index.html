@@ -1,57 +1,62 @@
-<script>
-  // 1. CARGA DE DATOS DESDE EL REPOSITORIO (noticias.json subido a GitHub)
-  fetch('./noticias.json') // Asegurate de guardarlo en la misma carpeta raíz o cambiar la ruta
-    .then(response => response.json())
-    .then(data => {
-      inicializarDashboard(data);
-    })
-    .catch(error => console.error("Error al cargar el JSON de noticias:", error));
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Sentimiento Financiero - Versión Avanzada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        .card-kpi {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .card-kpi:hover {
+            transform: translateY(-2px);
+        }
+        .dashboard-container {
+            padding: 30px;
+        }
+        .chart-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            height: 320px;
+        }
+        .table-container {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        /* Badges estilizados para Sentimiento */
+        .badge-positivo { background-color: #d1e7dd; color: #0f5132; padding: 5px 10px; border-radius: 20px; font-size: 0.85em; font-weight: 500; }
+        .badge-negativo { background-color: #f8d7da; color: #842029; padding: 5px 10px; border-radius: 20px; font-size: 0.85em; font-weight: 500; }
+        .badge-neutral { background-color: #e2e3e5; color: #41464b; padding: 5px 10px; border-radius: 20px; font-size: 0.85em; font-weight: 500; }
+        
+        /* Ajustes de scrollbar para la tabla */
+        .table-container::-webkit-scrollbar { width: 6px; }
+        .table-container::-webkit-scrollbar-thumb { background-color: #cccccc; border-radius: 4px; }
+    </style>
+</head>
+<body>
 
-  function inicializarDashboard(noticias) {
-    // 2. CÁLCULO AUTOMÁTICO DE KPIs (Solución al problema del cero)
-    let totalNoticias = noticias.length;
-    let positivos = noticias.filter(n => n.Sentimiento === 'Positivo').length;
-    let negativos = noticias.filter(n => n.Sentimiento === 'Negativo').length;
-    let neutrales = noticias.filter(n => n.Sentimiento === 'Neutral').length;
-
-    // Actualizamos las tarjetas de la izquierda en el HTML usando sus IDs correspondientes
-    // (Asegurate de que los IDs coincidan con los de tus divs/span de KPIs)
-    document.getElementById('kpi-total').innerText = totalNoticias;
-    document.getElementById('kpi-positivos').innerText = positivos;
-    document.getElementById('kpi-negativos').innerText = negativos;
-    document.getElementById('kpi-neutrales').innerText = neutrales;
-
-    // 3. RENDERIZADO DE LA TABLA INTERACTIVA (Abajo a la derecha)
-    const tablaCuerpo = document.getElementById('tabla-noticias-body'); 
-    tablaCuerpo.innerHTML = ''; // Limpiamos marcador estático anterior
-
-    noticias.forEach(noticia => {
-      const fila = document.createElement('tr');
-      
-      // Definimos el color del semáforo según el impacto (Lógica del Color Manager de KNIME)
-      let badgeColor = 'bg-secondary'; // Por defecto gris
-      let borderColor = 'border-left: 4px solid #gray;';
-      
-      if (noticia.Inpacto === 'Alto' || noticia.Inpacto === 'High') {
-        borderColor = 'border-left: 5px solid #dc3545;'; // Rojo para Alto
-      } else if (noticia.Inpacto === 'Medio' || noticia.Inpacto === 'Medium') {
-        borderColor = 'border-left: 5px solid #ffc107;'; // Amarillo para Medio
-      } else if (noticia.Inpacto === 'Bajo' || noticia.Inpacto === 'Low') {
-        borderColor = 'border-left: 5px solid #198754;'; // Verde para Bajo
-      }
-
-      // Estructuramos la fila imitando el Table View profesional que lograste
-      fila.innerHTML = `
-        <td style="${borderColor} font-weight: 500;">${noticia.Titular_Noticia}</td>
-        <td><span class="badge-sentimiento ${noticia.Sentimiento.toLowerCase()}">${noticia.Sentimiento}</span></td>
-        <td><strong>${noticia.Inpacto}</strong></td>
-        <td class="text-muted small">${noticia.Entidad || 'N/A'}</td>
-      `;
-      
-      tablaCuerpo.appendChild(fila);
-    });
-
-    // 4. AQUÍ ABAJO PODÉS INYECTAR LAS VARIABLES (positivos, negativos) 
-    // EN TUS GRÁFICOS DE BARRAS Y DONA PARA QUE SE ACTUALICEN EN VIVO.
-  }
-</script>
+<div class="container-fluid dashboard-container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold text-dark m-0">Análisis de Sentimiento de Noticias Financieras</h1>
+            <p class="text-muted">Análisis macroeconómico automatizado en tiempo real</p>
+        </div>
+    </div>
