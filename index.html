@@ -60,3 +60,190 @@
             <p class="text-muted">Análisis macroeconómico automatizado en tiempo real</p>
         </div>
     </div>
+
+    <div class="row g-4">
+        
+        <div class="col-12 col-md-3 d-flex flex-column justify-content-between">
+            <div class="card card-kpi bg-primary text-white mb-3 p-3 flex-fill">
+                <div class="small text-uppercase opacity-75">Total Noticias</div>
+                <div class="display-5 fw-bold" id="kpi-total">0</div>
+            </div>
+            <div class="card card-kpi bg-white border-start border-success border-4 mb-3 p-3 flex-fill">
+                <div class="small text-muted text-uppercase fw-semibold">Sentimiento Positivo</div>
+                <div class="display-6 fw-bold text-success" id="kpi-positivos">0</div>
+            </div>
+            <div class="card card-kpi bg-white border-start border-danger border-4 mb-3 p-3 flex-fill">
+                <div class="small text-muted text-uppercase fw-semibold">Sentimiento Negativo</div>
+                <div class="display-6 fw-bold text-danger" id="kpi-negativos">0</div>
+            </div>
+            <div class="card card-kpi bg-white border-start border-secondary border-4 p-3 flex-fill">
+                <div class="small text-muted text-uppercase fw-semibold">Sentimiento Neutral</div>
+                <div class="display-6 fw-bold text-secondary" id="kpi-neutrales">0</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-9">
+            <div class="row g-4">
+                <div class="col-12 col-md-7">
+                    <div class="chart-container">
+                        <h6 class="fw-bold text-muted mb-3 text-uppercase small">Distribución de Sentimiento</h6>
+                        <canvas id="chartBarras"></canvas>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5">
+                    <div class="chart-container d-flex flex-column align-items-center">
+                        <h6 class="fw-bold text-muted mb-3 text-uppercase align-self-start small">Proporción de Impacto</h6>
+                        <div style="width: 100%; max-width: 200px;"><canvas id="chartDona"></canvas></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="table-container">
+                        <h6 class="fw-bold text-muted mb-3 text-uppercase small">Monitor de Noticias Recientes e Impacto (Semáforo)</h6>
+                        <table class="table table-hover align-middle m-0">
+                            <thead class="table-light sticky-top">
+                                <tr>
+                                    <th style="width: 50%;">Titular de la Noticia</th>
+                                    <th>Sentimiento</th>
+                                    <th>Impacto</th>
+                                    <th>Entidad Clave</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-noticias-body">
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted py-4">Cargando análisis de IA...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mt-5 pt-3 border-top">
+        <div class="col-12 text-secondary">
+            <p class="m-0 fw-semibold">Dashboard de Inteligencia Financiera — Versión Avanzada V2</p>
+            <p class="small text-muted m-0">Infraestructura de datos automatizada mediante Yahoo Finance, Google Sheets, ETL en KNIME Analytics Platform e inferencia de modelos LLM para la categorización y extracción de riesgos.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Variables globales para los gráficos
+    let chartBarrasInstance = null;
+    let chartDonaInstance = null;
+
+    // Consumir el archivo JSON local de GitHub
+    fetch('./noticias.json')
+        .then(response => {
+            if (!response.ok) throw new Error("No se pudo cargar noticias.json");
+            return response.json();
+        })
+        .then(data => {
+            inicializarDashboard(data);
+        })
+        .catch(error => {
+            console.error("Error inicializando el dashboard:", error);
+            document.getElementById('tabla-noticias-body').innerHTML = `
+                <tr><td colspan="4" class="text-center text-danger">Error al sincronizar con GitHub. Verifique noticias.json</td></tr>
+            `;
+        });
+
+    function inicializarDashboard(noticias) {
+        // 1. CÁLCULO DE MÉTRICAS KPI (Mapeado exacto con tu KNIME)
+        let total = noticias.length;
+        let positivos = noticias.filter(n => n.Sentimiento === 'Positivo').length;
+        let negativos = noticias.filter(n => n.Sentimiento === 'Negativo').length;
+        let neutrales = noticias.filter(n => n.Sentimiento === 'Neutral').length;
+
+        // Inyectar valores en las tarjetas correspondientes
+        document.getElementById('kpi-total').innerText = total;
+        document.getElementById('kpi-positivos').innerText = positivos;
+        document.getElementById('kpi-negativos').innerText = negativos;
+        document.getElementById('kpi-neutrales').innerText = neutrales;
+
+        // Contadores para el gráfico de Impacto (Dona)
+        let impactoAlto = noticias.filter(n => n.Inpacto === 'Alto' || n.Inpacto === 'High').length;
+        let impactoMedio = noticias.filter(n => n.Inpacto === 'Medio' || n.Inpacto === 'Medium').length;
+        let impactoBajo = noticias.filter(n => n.Inpacto === 'Bajo' || n.Inpacto === 'Low').length;
+
+        // 2. CONSTRUCCIÓN DE LA TABLA INTERACTIVA CON SEMÁFOROS
+        const cuerpoTabla = document.getElementById('tabla-noticias-body');
+        cuerpoTabla.innerHTML = ''; // Limpiar el cargando...
+
+        noticias.forEach(noticia => {
+            const fila = document.createElement('tr');
+            
+            // Lógica de Semáforos (Borde izquierdo de color según impacto de KNIME)
+            let borderColor = 'border-left: 5px solid #6c757d;'; // Gris por defecto
+            if (noticia.Inpacto === 'Alto' || noticia.Inpacto === 'High') {
+                borderColor = 'border-left: 5px solid #dc3545;'; // Rojo
+            } else if (noticia.Inpacto === 'Medio' || noticia.Inpacto === 'Medium') {
+                borderColor = 'border-left: 5px solid #ffc107;'; // Amarillo/Naranja
+            } else if (noticia.Inpacto === 'Bajo' || noticia.Inpacto === 'Low') {
+                borderColor = 'border-left: 5px solid #198754;'; // Verde
+            }
+
+            // Normalización de clases CSS para el Sentimiento
+            let badgeClass = 'badge-neutral';
+            if (noticia.Sentimiento === 'Positivo') badgeClass = 'badge-positivo';
+            if (noticia.Sentimiento === 'Negativo') badgeClass = 'badge-negativo';
+
+            fila.innerHTML = `
+                <td style="${borderColor} padding-left: 12px; font-weight: 500;">${noticia.Titular_Noticia}</td>
+                <td><span class="${badgeClass}">${noticia.Sentimiento}</span></td>
+                <td><span class="fw-bold text-dark">${noticia.Inpacto}</span></td>
+                <td class="text-muted small">${noticia.Entidad || 'General / Mercados'}</td>
+            `;
+            cuerpoTabla.appendChild(fila);
+        });
+
+        // 3. RENDERIZAR GRÁFICO DE BARRAS (Distribución de Sentimientos)
+        const ctxBarras = document.getElementById('chartBarras').getContext('2d');
+        if (chartBarrasInstance) chartBarrasInstance.destroy();
+        chartBarrasInstance = new Chart(ctxBarras, {
+            type: 'bar',
+            data: {
+                labels: ['Positivo', 'Neutral', 'Negativo'],
+                datasets: [{
+                    label: 'Cantidad de Noticias',
+                    data: [positivos, neutrales, negatives = negativos],
+                    backgroundColor: ['#198754', '#6c757d', '#dc3545'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+            }
+        });
+
+        // 4. RENDERIZAR GRÁFICO DE DONA (Proporción de Impactos)
+        const ctxDona = document.getElementById('chartDona').getContext('2d');
+        if (chartDonaInstance) chartDonaInstance.destroy();
+        chartDonaInstance = new Chart(ctxDona, {
+            type: 'doughnut',
+            data: {
+                labels: ['Alto', 'Medio', 'Bajo'],
+                datasets: [{
+                    data: [impactoAlto, impactoMedio, impactoBajo],
+                    backgroundColor: ['#dc3545', '#ffc107', '#198754']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
